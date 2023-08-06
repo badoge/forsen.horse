@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>forsen soundboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, shrink-to-fit=no" />
+    <meta name="description" content="forsen soundboard" />
+    <meta name="keywords" content="forsen, soundboard, twitch" />
+    <meta property="og:title" content="forsen soundboard" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://forsen.horse/soundboard/" />
+    <meta property="og:image" content="https://forsen.horse/pics/ogimage.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:description" content="forsen soundboard" />
+    <link rel="apple-touch-icon" sizes="112x112" href="/pics/forsenle/icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/pics/forsenle/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/pics/forsenle/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="theme-color" content="#938271" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/icons.css" />
+    <link rel="stylesheet" href="/css/soundboard.min.css" />
+  </head>
+
+  <body>
+    <noscript><div class="alert alert-danger" role="alert">WARNING! JavaScript is disabled. This site will not work properly without it.</div></noscript>
+
+    <div class="modal fade" id="infoModal" tabindex="-1" aria-labelledby="infoModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="infoModalLabel"></h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="infoModalBody"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="aboutModal" tabindex="-1" aria-labelledby="aboutModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="aboutModalLabel">About this soundboard</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            This site is based off <a target="_blank" rel="noopener noreferrer" href="https://github.com/badoge/soundboard">this soundboard</a> which is used by
+            <a target="_blank" rel="noopener noreferrer" href="https://www.twitch.tv/nam______________________">NaM______________________</a> :) categories are there to make it easier to say
+            stuff on stream using <a target="_blank" rel="noopener noreferrer" href="https://www.leppsoft.com/soundpad/en/">Soundpad</a> <br /><br />
+            None of the samples have metadata for now :)
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="container">
+        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+          <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+            <img src="/pics/forsenle/icon.png" class="me-2" width="40" height="40" alt="forsenE" />
+            <span class="fs-4">forsen.horse</span>
+          </a>
+          <ul class="nav nav-pills">
+            <li class="nav-item">
+              <a href="#" class="nav-link active" aria-current="page"><i class="material-icons notranslate">campaign</i> Soundboard</a>
+            </li>
+            <li class="nav-item">
+              <a href="/" target="_blank" class="nav-link"><img src="/pics/forsenle/icon.png" width="20" height="20" alt="forsenE" /> Forsle</a>
+            </li>
+            <li class="nav-item">
+              <a href="/playlist/" target="_blank" class="nav-link"><i class="material-icons notranslate">shuffle</i> Playlist Shuffler</a>
+            </li>
+          </ul>
+        </header>
+      </div>
+
+      <div class="row">
+        <div class="col-2"></div>
+        <div class="col-8">
+          <div class="d-flex">
+            <div class="form-floating mb-3 me-3" style="width: 100%; align-self: center">
+              <input type="text" class="form-control" oninput="search(event)" id="search" placeholder="Search" />
+              <label for="search">Search</label>
+            </div>
+            <div class="dropdown">
+              <button class="btn btn-secondary btn-lg dropdown-toggle" style="height: 58px" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                <i class="material-icons notranslate">settings</i>Settings
+              </button>
+              <div class="dropdown-menu dropdown-menu-end p-3" style="width: 300px; font-size: 0.9rem">
+                <div class="form-check form-switch">
+                  <input class="form-check-input" type="checkbox" role="switch" id="allowOverlap" />
+                  <label class="form-check-label" for="allowOverlap">Allow sounds to play over each other</label>
+                </div>
+                <hr />
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="samplesFilter" id="showAll" checked />
+                  <label class="form-check-label" for="showAll"> Show all samples </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="samplesFilter" id="showWithMetadata" />
+                  <label class="form-check-label" for="showWithMetadata"> Show samples with metadata only </label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="radio" name="samplesFilter" id="showWithoutMetadata" />
+                  <label class="form-check-label" for="showWithoutMetadata"> Show samples without metadata only</label>
+                </div>
+                <hr />
+                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#aboutModal"><i class="material-icons notranslate">help_outline</i>About</button>
+              </div>
+            </div>
+          </div>
+
+          <div id="dank"></div>
+        </div>
+        <div class="col-2"></div>
+      </div>
+    </div>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/soundboard.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MP43Y40GR6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MP43Y40GR6");
+    </script>
+  </body>
+</html>

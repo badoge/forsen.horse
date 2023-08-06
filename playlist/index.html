@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>Forsen's DMCA free playlist</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, shrink-to-fit=no" />
+    <meta
+      name="description"
+      content="This is the Forsen's DMCA-free playlist filled with songs from zoomer games and boomer games. There will be gachi, forsen memes, and other varieties that aren't strictly from games. (original idea by Boneman7)"
+    />
+    <meta name="keywords" content="youtube, playlist, music, forsen, horse, horsen, game, stream, twitch" />
+    <meta property="og:title" content="Forsen's DMCA free playlist" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://forsen.horse/playlist/" />
+    <meta property="og:image" content="https://forsen.horse/pics/ogimage.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta
+      property="og:description"
+      content="This is the Forsen's DMCA-free playlist filled with songs from zoomer games and boomer games. There will be gachi, forsen memes, and other varieties that aren't strictly from games. (original idea by Boneman7)"
+    />
+
+    <link rel="apple-touch-icon" sizes="112x112" href="/pics/forsenle/icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/pics/forsenle/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/pics/forsenle/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="theme-color" content="#000000" />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/icons.css" />
+    <link rel="stylesheet" href="/css/playlist.min.css" />
+  </head>
+
+  <body class="w-100 h-100">
+    <noscript><div class="alert alert-danger" role="alert">WARNING! JavaScript is disabled. This site will not work properly without it.</div></noscript>
+
+    <div class="modal fade" id="modalPanic" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header alert-warning">
+            <h5 class="modal-title alert-warning panic-title">⚠️ Attention!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="modalPanicBody"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalHelper" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title"><img src="/pics/forsenle/icon.png" alt="👋" class="logo" />&nbsp;&nbsp;Forsen's DMCA free playlist</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            This is a simple media player which comes with a nice playlist full of hand-picked songs, including game OSTs, memes, etc.
+            <br /><br />
+            The original purpose of this playlist was to provide streamers with DMCA-free music. Especially those who can't be bothered to take several minutes to setup their OBS audio
+            properly and play whatever music they want.
+            <br /><br />
+            You can use your own playlist. Click the "Change playlist" button and provide a YouTube link to shuffle your favorite songs.
+            <hr />
+            <h5>Features</h5>
+            <ul>
+              <li>As simple as it gets - no extra buttons</li>
+              <li>Unavailable songs are automatically skipped</li>
+              <li>Shuffler uses all songs (not just first 200)</li>
+              <li>Restores your last shuffle order and last played song - don't repeat yourself!</li>
+              <li>New songs are automatically appended to the list as the playlist gets updated.</li>
+              <li>Custom shuffle mechanism: is really random, I promise! <img src="/pics/emotes/Kapp.png" alt="" class="logo" /></li>
+              <li>You can change the default playlist - shuffle your favorite songs!</li>
+            </ul>
+            <h5>Controls</h5>
+            <ul>
+              <li><em class="text-body-secondary">Volume control</em>: slide to adjust sound level</li>
+              <li><em class="text-success">Play/pause</em>: use to quickly start or stop current song</li>
+              <li><em class="text-warning">Next song</em>: click to skip current song</li>
+              <li><em class="text-info">Reshuffle</em>: click to reshuffle songs. You can also order an auto-reshuffle on each visit, if you want.</li>
+              <li><em class="text-info opacity-75">Change playlist</em>: you can enter a link to YouTube playlist, and the shuffler will play your songs.</li>
+            </ul>
+            <hr />
+            <small class="text-body-secondary">Player designed by <a href="https://g7eternal.com/" target="_blank" rel="noopener noreferrer" class="no-decoration">G7Eternal</a></small>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalExtPlaylist" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title"><img src="/pics/forsenle/icon.png" alt="👋" class="logo" />&nbsp;&nbsp;Playlist source</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <h5>Default playlist</h5>
+            The original playlist is available
+            <a href="https://www.youtube.com/playlist?list=PLA4XEe9tV8qaSoneg5s5uJYo6HrWnT7T0" target="_blank" rel="noopener noreferrer" class="no-decoration">on YouTube</a>.<br />
+            <button role="button" tabindex="0" id="doUseDefaultPlaylist" class="btn btn-primary d-flex mx-auto my-2">
+              <i class="material-icons notranslate my-auto align-center">low_priority</i>
+              <span class="my-auto ms-2">Use default playlist</span>
+            </button>
+            <hr />
+            <h5>Custom playlist</h5>
+            You may provide a link to another YouTube playlist. The player will get the list of songs, and shuffle them up for you.
+            <div class="input-group my-2">
+              <input type="text" class="form-control" id="inputPlaylistLink" placeholder="https://www.youtube.com/playlist?list=PLA4XEe9tV8qaSoneg5s5uJYo6HrWnT7T0" />
+              <button role="button" tabindex="0" id="doUseCustomPlaylist" class="btn btn-primary">Load</button>
+            </div>
+            <small class="d-block mb-2 text-danger fw-bold" id="customPlaylistError"></small>
+            <small class="text-body-secondary">
+              NOTE: the custom playlist will NOT automatically update itself. You will have to do that manually each time songs are added to or removed from playlist.
+            </small>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="d-flex flex-column h-100 w-100 m-0">
+      <!-- top bar: logo, buttons -->
+      <div class="container-fluid flex-grow-0 p-0 custom-navbar">
+        <div class="navbar bg-body-tertiary px-2 py-0 h-100">
+          <div class="navbar-brand">
+            <img src="/pics/forsenle/icon.png" class="logo" alt="logo" class="d-inline-block align-top" />
+            <span class="text-white align-middle">Forsen's Playlist Shuffler</span>
+            <button type="button" id="helperButton" class="btn headerbtn" data-bs-toggle="tooltip" data-bs-title="About">
+              <i class="material-icons notranslate">help_outline</i>
+            </button>
+          </div>
+          <div class="d-flex flex-wrap m-0 p-0" id="globalControls">
+            <button
+              disabled
+              type="button"
+              id="muteButton"
+              class="btn headerbtn"
+              title="Mute player"
+              data-bs-toggle="tooltip"
+              data-bs-title="Mute player"
+              onclick="this.firstElementChild.innerText = updateMuteState()"
+            >
+              <i class="material-icons notranslate">volume_up</i>
+            </button>
+            <input disabled type="range" min="0" max="100" value="50" step="1" id="volumeSlider" title="Volume" />
+            <button disabled role="button" tabindex="0" id="doPlay" class="btn btn-success d-flex mx-1" data-bs-toggle="tooltip" data-bs-title="Start playing">
+              <i class="material-icons notranslate my-auto align-center" id="doPlayButtonIcon">play_arrow</i>
+              <span class="my-auto" id="doPlayButtonText">Start playing</span>
+            </button>
+            <button disabled role="button" tabindex="0" id="doSkipSong" class="btn btn-warning d-flex mx-1" data-bs-toggle="tooltip" data-bs-title="Next song">
+              <i class="material-icons notranslate my-auto align-center">skip_next</i>
+              <span class="my-auto">Next song</span>
+            </button>
+            <div class="btn-group mx-1" id="ctrlGroupShuffle">
+              <button disabled role="button" tabindex="0" id="doShuffle" class="btn btn-info d-flex" data-bs-toggle="tooltip" data-bs-title="Reshuffle">
+                <i class="material-icons notranslate my-auto align-center">shuffle</i>
+                <span class="my-auto">Reshuffle</span>
+              </button>
+              <button
+                type="button"
+                class="btn btn-info dropdown-toggle dropdown-toggle-split"
+                data-bs-toggle="dropdown"
+                data-bs-auto-close="outside"
+                aria-expanded="false"
+                aria-labelledby="dropdownMenuClickableInside"
+              >
+                <span class="visually-hidden">Reshuffle options</span>
+              </button>
+              <div class="dropdown-menu dropdown-menu-end dropdown-menu-portrait-fix">
+                <div class="dropdown-item">
+                  <input class="form-check-input" type="checkbox" value="" id="optShuffleOnRefresh" />
+                  <label class="form-check-label ms-1" for="optShuffleOnRefresh"> Force new shuffle on reload </label>
+                </div>
+              </div>
+            </div>
+            <button role="button" tabindex="0" id="doChangePlaylist" class="btn btn-outline-info d-flex mx-1" data-bs-toggle="tooltip" data-bs-title="Change playlist">
+              <i class="material-icons notranslate my-auto align-center">post_add</i>
+              <span class="my-auto">Change playlist</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- main content: youtube player, playlist content -->
+      <div class="container-fluid main-content" id="loader">
+        <img src="/pics/forsenle/forsenspin.gif" alt="forsenSpin" />
+        <div>Loading...</div>
+      </div>
+      <div class="container-fluid main-content" id="content" style="display: none">
+        <div class="content-section" id="ytPlayerContainer">
+          <div id="YtPlayer"></div>
+        </div>
+        <div class="content-section" id="playlist">
+          <div class="fs-6 bg-body text-center my-2">
+            <i>Now playing:</i>
+            <a href="https://www.youtube.com/playlist?list=PLA4XEe9tV8qaSoneg5s5uJYo6HrWnT7T0" target="_blank" rel="noopener noreferrer" class="no-decoration" id="nowPlayingList">
+              original Forsen playlist
+            </a>
+          </div>
+          <ul class="list-group list-group-flush" id="playlistItems">
+            <!-- dynamic contents -->
+            <li class="list-group-item list-group-item-action active flex-column-nowrap align-items-start" id="playitem-name-1">
+              <p class="m-0" id="playitem-title-1">Video title</p>
+              <small class="yt-author" id="playitem-author-1">Channel name</small>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/playlist.min.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MP43Y40GR6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MP43Y40GR6");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>Forsle: your daily dose of Forsen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, shrink-to-fit=no" />
+    <meta name="description" content="Forsen-related game. Forsen mixes, news, big plays, tilts. Everything that is somewhat related to Forsen." />
+    <meta name="keywords" content="forsen, horse, horsen, forsle, forsenle, daily, wordle, game, stream, twitch" />
+    <meta property="og:title" content="Forsle: your daily dose of Forsen" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://forsen.horse/" />
+    <meta property="og:image" content="https://forsen.horse/pics/ogimage.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:description" content="Forsen-related game. Forsen mixes, news, big plays, tilts. Everything that is somewhat related to Forsen." />
+
+    <link rel="manifest" href="/manifest.webmanifest" />
+
+    <link rel="apple-touch-icon" sizes="112x112" href="/pics/forsenle/icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/pics/forsenle/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/pics/forsenle/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="theme-color" content="#938271" />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/icons.css" />
+    <link rel="stylesheet" href="/css/jquery.datetimepicker.min.css" />
+    <link rel="stylesheet" href="/css/forsle-flipper.min.css" />
+    <link rel="stylesheet" href="/css/forsenle.min.css" />
+  </head>
+
+  <body>
+    <noscript>
+      <div class="alert alert-danger" role="alert">WARNING! JavaScript is disabled. This site will not work properly without it.</div>
+    </noscript>
+
+    <div class="modal fade" id="modalPanic" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header alert-warning">
+            <h5 class="modal-title alert-warning panic-title">⚠️ Attention!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="modalPanicBody"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="modalWelcome" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title"><img src="/pics/forsenle/icon.png" alt="👋" class="inline-flavor" />&nbsp;&nbsp;Welcome to Forsle!</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul class="list-unstyled">
+              <li>Each day you'll get a frame from Forsen's vod. Your task is to guess the date of the stream.</li>
+              <li>To make a guess, enter a date in the input field and click "Submit" (or hit the Enter button).</li>
+              <li>In <em>normal mode</em> there is no limit on how many guesses you can submit.</li>
+              <li>If you want a real challenge, enable <em>♨️ hard mode</em> in Settings.&nbsp;<img alt="nime" src="/pics/forsenle/nime.png" class="inline-smol" /></li>
+              <li>After each guess you'll get a clue about how close you were to the correct date, and whether the correct date is before or after your guess.</li>
+            </ul>
+            <hr />
+            <h5>Colors and arrows:</h5>
+            <div class="container-fluid">
+              <div class="row align-items-center">
+                <div class="col-5">
+                  <ul class="list-group">
+                    <li class="list-group-item ug-incorrect">⬛ Terrible guess</li>
+                    <li class="list-group-item ug-far">🟥 Bad guess</li>
+                    <li class="list-group-item ug-close">🟨 Good guess</li>
+                    <li class="list-group-item ug-correct">🟩 Correct date</li>
+                  </ul>
+                </div>
+                <div class="col-7">
+                  <ul class="list-group list-group-horizontal" style="text-align: center">
+                    <li class="list-group-item">
+                      ⏪<br />
+                      Correct date is lower
+                    </li>
+                    <li class="list-group-item">
+                      ⏩<br />
+                      Correct date is higher
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <hr />
+            <h5>Examples:</h5>
+            <div class="user-guess-example">
+              <div class="ug-element static ug-date ug-far">19</div>
+              <div class="ug-element static ug-month ug-close">04</div>
+              <div class="ug-element static ug-fullyear ug-incorrect">2022</div>
+              <div class="ug-element static ug-direction">⏪</div>
+            </div>
+            The correct date is way lower, since you didn't guess the year. And the day in your guess is not very close. But at least you almost got the month!
+            <div class="user-guess-example">
+              <div class="ug-element static ug-date ug-correct">25</div>
+              <div class="ug-element static ug-month ug-close">06</div>
+              <div class="ug-element static ug-fullyear ug-close">2016</div>
+              <div class="ug-element static ug-direction">⏩</div>
+            </div>
+            You got the day! But year and month are slightly off. And the whole date is still slightly lower than needed.
+            <div class="user-guess-example">
+              <div class="ug-element static ug-date ug-correct">25</div>
+              <div class="ug-element static ug-month ug-correct">05</div>
+              <div class="ug-element static ug-fullyear ug-correct">2017</div>
+              <div class="ug-element static ug-direction">🥳</div>
+            </div>
+            That's it! You found the date!<br /><br />Note that although some dates may appear next to each other in calendar, numeric representation of day, month, and year of the dates
+            will still be far apart. Like so:
+            <div class="user-guess-example">
+              <div class="ug-element static ug-date ug-close">30</div>
+              <div class="ug-element static ug-month ug-correct">12</div>
+              <div class="ug-element static ug-fullyear ug-correct">2020</div>
+              <div class="ug-element static ug-direction">⏩</div>
+            </div>
+            <div class="user-guess-example user-guess-example-shrink">
+              <div class="ug-element static ug-date ug-incorrect">01</div>
+              <div class="ug-element static ug-month ug-incorrect">01</div>
+              <div class="ug-element static ug-fullyear ug-close">2021</div>
+              <div class="ug-element static ug-direction">⏪</div>
+            </div>
+            <div class="user-guess-example user-guess-example-shrink">
+              <div class="ug-element static ug-date ug-correct">31</div>
+              <div class="ug-element static ug-month ug-correct">12</div>
+              <div class="ug-element static ug-fullyear ug-correct">2020</div>
+              <div class="ug-element static ug-direction">🥳</div>
+            </div>
+            <hr />
+            <h5>⭐ Prestige round</h5>
+            After a correct guess you may receive an offer to play a bonus round.
+            <br />
+            In Prestige round, you have to name the game on the picture. The game which Forsen is playing (or reacting to).
+            <br />
+            Prestige round is optional. You are not limited by timers or attempt counts. You may stop the Prestige round at any time. Prestige round stats are tracked separately.
+            <hr />
+            <b>There will be a new Forsen waiting for you every day!</b><br />
+            <small class="text-body-secondary">Game by <a href="https://g7eternal.com/" target="_blank" rel="noopener noreferrer" class="no-decoration">G7Eternal</a></small>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="modalVictory" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalVictoryTitle"><i class="material-icons notranslate">leaderboard</i> Statistics</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="section-content">
+              <div class="section-stat" id="st_statcongrats" style="display: none">
+                You found the correct date in
+                <span id="st_tries" class="stat-text text-info">X</span>
+                attempts. Nice!
+                <img src="/pics/forsenle/icon.png" class="inline-smol" alt="forsenE" />
+              </div>
+              <div class="section-stat" id="st_statshame" style="display: none">
+                You failed to identify today's Forsen.&nbsp;<img class="inline-smol" src="/pics/forsenle/forsenpossessed.gif" alt="fail" />
+              </div>
+              <div class="section-stat" id="st_stprestige" style="display: none">
+                <b>⭐</b> Additionally, you guessed the game in
+                <span id="st_tries" class="stat-text text-info prestige-counter">X</span>
+                attempts.
+              </div>
+              <div class="section-stat">
+                <div class="accordion" id="statAccordion">
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#statCollapse1" aria-expanded="true" aria-controls="statCollapse1">
+                        🧔 Game stats
+                      </button>
+                    </h2>
+                    <div class="accordion-collapse collapse show" id="statCollapse1" data-bs-parent="#statAccordion">
+                      <div class="accordion-body">
+                        <table class="table table-striped table-stats" id="tableWithStats">
+                          <tbody>
+                            <tr>
+                              <td>Games played:</td>
+                              <td id="st_games">-</td>
+                            </tr>
+                            <tr>
+                              <td>Win rate:</td>
+                              <td id="st_winrate">-</td>
+                            </tr>
+                            <tr>
+                              <td>Streak:</td>
+                              <td id="st_streak">-</td>
+                            </tr>
+                            <tr>
+                              <td>Average attempts:</td>
+                              <td id="st_avgtimes">-</td>
+                            </tr>
+                            <tr>
+                              <td>Record minimum:</td>
+                              <td id="st_min">-</td>
+                            </tr>
+                            <tr>
+                              <td>Record maximum:</td>
+                              <td id="st_max">-</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="accordion-item">
+                    <h2 class="accordion-header">
+                      <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#statCollapse2" aria-expanded="false" aria-controls="statCollapse2">
+                        ⭐ Prestige stats
+                      </button>
+                    </h2>
+                    <div class="accordion-collapse collapse" id="statCollapse2" data-bs-parent="#statAccordion">
+                      <div class="accordion-body">
+                        <table class="table table-striped table-stats" id="tableWithPrestigeStats">
+                          <tbody>
+                            <tr>
+                              <td>Rounds started:</td>
+                              <td id="st_p_games">-</td>
+                            </tr>
+                            <tr>
+                              <td>Rounds won:</td>
+                              <td id="st_p_wins">-</td>
+                            </tr>
+                            <tr>
+                              <td>Average guesses:</td>
+                              <td id="st_p_avgtimes">-</td>
+                            </tr>
+                            <tr>
+                              <td>Record minimum:</td>
+                              <td id="st_p_min">-</td>
+                            </tr>
+                            <tr>
+                              <td>Record maximum:</td>
+                              <td id="st_p_max">-</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="section-stat mb-3" style="display: none">
+                <i class="material-icons notranslate">alarm</i>&nbsp;Next Forsen clone will be deployed in: <span id="st_countdown" class="stat-text text-info">XX:XX:XX</span>
+              </div>
+            </div>
+            <div class="card" id="otherGamesPlacer">
+              <div class="card-body">
+                Looking for more daily games? Check out
+                <a href="https://okayeg.com/egdle/" target="_blank" rel="noopener" class="text-info no-decoration"> 🥚 Egdle </a>!
+                <br />
+                Or try
+                <a href="/chattersen/" target="_blank" rel="noopener" class="text-info no-decoration"> 🧔 Chattersen </a>
+                if you want more Forsen.
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" id="getResultsButton">🗒️ Share your stats</button>
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal" id="modalSettings" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title"><i class="material-icons notranslate">settings</i> Settings</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" value="" id="opt_HardMode" />
+              <label class="form-check-label" for="opt_HardMode">♨️ Hard mode</label>
+              <br />
+              <small class="form-text text-body-secondary">You have to find correct date in <strong>6</strong> tries &ndash; best way to prove you're a true baj!</small>
+            </div>
+            <hr />
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" value="" id="opt_DarkMode" />
+              <label class="form-check-label" for="opt_DarkMode">💡 Dark theme</label>
+              <br />
+              <small class="form-text text-body-secondary">Toggles light/dark mode for the game</small>
+            </div>
+            <hr />
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" value="" id="opt_HighContrastMode" />
+              <label class="form-check-label" for="opt_HighContrastMode">🔰 High contrast mode</label>
+              <br />
+              <small class="form-text text-body-secondary">Changes style of elements to improve color vision</small>
+            </div>
+            <hr />
+            <div class="form-check form-switch">
+              <input class="form-check-input" type="checkbox" value="" id="opt_ZoomImageOnClick" />
+              <label class="form-check-label" for="opt_ZoomImageOnClick">🔎 Image expander</label>
+              <br />
+              <small class="form-text text-body-secondary">When this option is on, you can click on stream frame to enlarge the image</small>
+            </div>
+            <hr />
+            <div>
+              <label class="form-check-label" for="opt_CalendarInput">📅 Input style:</label>
+              <br />
+              <select class="form-select mt-2" id="opt_CalendarInput">
+                <option value="flipbox">Scroller</option>
+                <option value="datetimepicker">Custom calendar</option>
+                <option value="date">Native calendar</option>
+                <option value="text">Plain text</option>
+              </select>
+              <small class="form-text text-body-secondary" id="calendarAdvice" data-fallback-text="Changes the way your input field behaves"></small>
+            </div>
+            <hr />
+            <div>
+              <label class="form-check-label" for="opt_DateOrderSelect">🔢 Preferred date format</label>
+              <br />
+              <select class="form-select mt-2" id="opt_DateOrderSelect">
+                <option selected>DD-MM-YYYY</option>
+                <option>MM-DD-YYYY</option>
+                <option>YYYY-MM-DD</option>
+              </select>
+              <small class="form-text text-body-secondary px-1">(does not affect "Native calendar" type of input)</small>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-3"></div>
+
+        <div class="col-xl-6">
+          <div class="container-fluid p-0">
+            <div class="row header">
+              <div class="col">
+                <div class="headerleft">
+                  <button
+                    type="button"
+                    id="aboutButton"
+                    class="btn headerbtn btn-outline-light"
+                    data-bs-toggle="tooltip"
+                    data-bs-delay="200"
+                    data-bs-placement="bottom"
+                    data-bs-title="About"
+                  >
+                    <i class="material-icons notranslate">help_outline</i>
+                  </button>
+                </div>
+              </div>
+              <div class="col">
+                <div class="headercenter">
+                  <span>FORSLE</span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="headerright">
+                  <button
+                    type="button"
+                    id="statsButton"
+                    class="btn headerbtn btn-outline-light"
+                    data-bs-toggle="tooltip"
+                    data-bs-delay="200"
+                    data-bs-placement="bottom"
+                    data-bs-title="View statistics"
+                  >
+                    <i class="material-icons notranslate">leaderboard</i>
+                  </button>
+                  <button
+                    type="button"
+                    id="settingsButton"
+                    class="btn headerbtn btn-outline-light"
+                    data-bs-toggle="tooltip"
+                    data-bs-delay="200"
+                    data-bs-placement="bottom"
+                    data-bs-title="Settings"
+                  >
+                    <i class="material-icons notranslate">settings</i>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row main-content">
+            <div id="loader" class="main-content">
+              <img class="loading-placeholder" src="/pics/forsenle/forsenspin.gif" alt="forsenSpin" />
+              <div class="loading-placeholder">Loading...</div>
+            </div>
+            <div id="game" class="main-content" style="display: none">
+              <div class="frame-container">
+                <img src="/pics/forsenle/icon.png" alt="forsen" id="picframe" class="main-frame" />
+              </div>
+              <div class="user-guess" id="userControlArea">
+                <div class="card border-secondary user-extended-info" id="frameInfoCard" style="display: none">
+                  <div class="card-body d-flex align-items-center">
+                    <div class="float-start flex-grow-1">
+                      <div id="frameGame"></div>
+                      <div class="opacity-75" id="framePrestige" style="display: none">
+                        ⭐ Prestige:
+                        <b class="text-primary prestige-counter">0</b>
+                      </div>
+                    </div>
+                    <a href="#" id="frameVod" role="button" target="_blank" rel="noopener noreferrer" class="btn btn-outline-danger no-decoration float-end">
+                      <img src="/pics/forsenle/youtube.png" alt="YouTube" /> &nbsp;Open video
+                    </a>
+                  </div>
+                </div>
+
+                <div class="card border-secondary user-extended-info" id="prestigeInviteCard" style="display: none">
+                  <div class="card-body d-flex flex-column align-items-center">
+                    <div class="fs-4 text-info">Prestige Round</div>
+                    <p class="text-center">
+                      Do you want to try and guess which game was Forsen playing?
+                      <br />
+                      This round is optional, and has no restrictions.
+                    </p>
+                    <div class="d-flex">
+                      <button class="btn btn-primary m-2" id="prestigeAcceptBtn">
+                        <i class="material-icons">local_activity</i>
+                        Start Prestige round
+                      </button>
+                      <button class="btn btn-secondary m-2" id="prestigeDeclineBtn">
+                        <i class="material-icons">not_interested</i>
+                        No, thanks
+                      </button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row" id="mainGameSection">
+                  <div id="mainGameHardModeInfo" class="user-guess-hard-mode alert text-body-secondary">
+                    <div>Attempts:</div>
+                    <div id="hardModeCounter">...</div>
+                  </div>
+                  <div class="user-guess-input input-group" id="mainGameGuessInput">
+                    <div class="input-group-prepend input-group-prepend-fix" id="iCalIcon">
+                      <label for="iAttempt" class="btn btn-secondary d-flex">
+                        <i class="material-icons notranslate my-auto align-center">event</i>
+                      </label>
+                    </div>
+                    <input
+                      class="form-control"
+                      id="iAttempt"
+                      name="iAttempt"
+                      type="text"
+                      required
+                      placeholder="YYYY-MM-DD"
+                      data-role="datebox"
+                      data-bs-toggle="popover"
+                      data-bs-placement="top"
+                      data-bs-content=""
+                    />
+                    <div id="forsleFlipper"></div>
+                    <div class="input-group-append input-group-append-fix">
+                      <button class="btn btn-primary" type="button" id="iSubmit">Submit</button>
+                    </div>
+                  </div>
+                  <div class="user-guess-history" id="mainGameGuessList">
+                    <!--dynamic contents-->
+                  </div>
+                </div>
+
+                <div id="prestigeSection" style="display: none">
+                  <div class="w-100 p-2 d-flex flex-row">
+                    <div class="flex-grow-1 text-start">
+                      <div class="fs-6">Which game is Forsen playing on this picture?</div>
+                      <div class="text-body-secondary">
+                        <div>
+                          Attempts:
+                          <b class="text-primary prestige-counter">0</b>
+                        </div>
+                      </div>
+                    </div>
+                    <div>
+                      <button class="btn btn-outline-warning" type="button" id="prestigeGiveUp">
+                        <i class="material-icons">front_hand</i>
+                        Give up
+                      </button>
+                    </div>
+                  </div>
+                  <div class="user-guess-input input-group" id="prestigeControls">
+                    <label for="prestigeInputText" class="input-group-text shadow-white">🎮</label>
+                    <input type="text" class="form-control" placeholder="Start typing for suggestions" list="prestigeGameOptions" id="prestigeInputText" />
+                    <button class="btn btn-primary" type="button" id="prestigeSubmit">Submit</button>
+                  </div>
+                  <datalist id="prestigeGameOptions">
+                    <!--dynamic contents-->
+                  </datalist>
+                  <div id="prestigeGuessList" class="user-prestige-guess-history">
+                    <!--dynamic contents-->
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3"></div>
+      </div>
+    </div>
+
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/jquery.datetimepicker.full.min.js"></script>
+    <script src="/js/forsle-flipper.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/confetti.min.js"></script>
+    <script src="/js/forsenle.min.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MP43Y40GR6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MP43Y40GR6");
+    </script>
+  </body>
+</html>

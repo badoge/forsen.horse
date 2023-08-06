@@ -1,0 +1,5 @@
+User-Agent: *
+Allow: /
+Allow: /tts
+Allow: /playlist
+Allow: /chattersen

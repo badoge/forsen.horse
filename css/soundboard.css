@@ -1,0 +1,22 @@
+i {
+  vertical-align: middle;
+  pointer-events: none;
+}
+
+::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bs-tertiary-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bs-secondary-color);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bs-dark-bg-subtle);
+}

@@ -1,0 +1,22 @@
+{
+    "amogus": { "class": "btn-primary", "description": "Among Us samples" },
+    "10lines": { "class": "btn-success", "description": "same 10 lines" },
+    "boasting": { "class": "btn-success", "description": "forsenSmug" },
+    "emote farming": { "class": "btn-primary", "description": "" },
+    "gfmb": { "class": "btn-info", "description": "Good fucking morning bajs" },
+    "harry potter": { "class": "btn-warning", "description": "" },
+    "laughs": { "class": "btn-info", "description": "" },
+    "mods": { "class": "btn-danger", "description": "" },
+    "noidontthinkso": { "class": "btn-danger", "description": "" },
+    "rage": { "class": "btn-danger", "description": "" },
+    "random singing": { "class": "btn-info", "description": "" },
+    "random statements": { "class": "btn-info", "description": "" },
+    "snus+forsen build": { "class": "btn-info", "description": "" },
+    "sven": { "class": "btn-info", "description": "" },
+    "uncategorized": { "class": "btn-info", "description": "" },
+    "unfriendly lines": { "class": "btn-danger", "description": "" },
+    "unlucky": { "class": "btn-warning", "description": "" },
+    "weeb": { "class": "btn-light", "description": "" },
+    "xqc": { "class": "btn-secondary", "description": "" },
+    "your mom": { "class": "btn-secondary", "description": "" }
+  }

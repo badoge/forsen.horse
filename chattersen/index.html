@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>⌨️ Chattersen</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, shrink-to-fit=no" />
+    <meta name="description" content="Forsen-related game. Forsen mixes, news, big plays, tilts. Everything that is somewhat related to Forsen." />
+    <meta name="keywords" content="chattersen, chatsen, chatter, chat, forsen, horse, horsen, forsle, forsenle, game, stream, twitch, higher, lower" />
+    <meta property="og:title" content="⌨️ Chattersen" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://forsen.horse/chattersen/" />
+    <meta property="og:image" content="https://forsen.horse/pics/ogimage.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:description" content="Forsen-related game. Forsen mixes, news, big plays, tilts. Everything that is somewhat related to Forsen." />
+
+    <link rel="apple-touch-icon" sizes="112x112" href="/pics/forsenle/icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/pics/forsenle/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/pics/forsenle/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="theme-color" content="#938271" />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/icons.css" />
+    <link rel="stylesheet" href="/css/chattersen.min.css" />
+  </head>
+
+  <body>
+    <noscript><div class="alert alert-danger" role="alert">WARNING! JavaScript is disabled. This site will not work properly without it.</div></noscript>
+
+    <div class="modal fade" id="modalPanic" tabindex="-1">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header alert-warning">
+            <h5 class="modal-title alert-warning panic-title">⚠️ Attention!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id="modalPanicBody"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal fade" id="modalWelcome" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h4 class="modal-title"><img src="/pics/forsenle/icon.png" alt="👋" class="inline-flavor" />&nbsp;&nbsp;Welcome to Chattersen!</h4>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <ul class="list-unstyled padded-items">
+              <li>This is a "higher-lower" kind of game - with Forsen flavor, of course!</li>
+              <li>You will get two messages, which were typed in Twitch chat by Forsen.</li>
+              <li>Your task is to determine whether second message was sent <em>earlier</em> or <em>later</em> than the first one.</li>
+              <li>If your guess is correct, you can keep playing. The game ends when you make a mistake.</li>
+            </ul>
+            <hr />
+            <b>That's pretty much it!<br />Go on and play, and share your best streak among friends!</b><br />
+            <small class="text-body-secondary">Game by <a href="https://g7eternal.com/" target="_blank" rel="noopener noreferrer" class="no-decoration">G7Eternal</a></small>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-3"></div>
+
+        <div class="col-xl-6">
+          <div class="container-fluid p-0">
+            <div class="row header">
+              <div class="col">
+                <div class="headerleft">
+                  <button
+                    type="button"
+                    id="aboutButton"
+                    class="btn headerbtn btn-outline-light"
+                    data-bs-toggle="tooltip"
+                    data-bs-delay="200"
+                    data-bs-placement="bottom"
+                    data-bs-title="About"
+                  >
+                    <i class="material-icons notranslate">help_outline</i>
+                  </button>
+                </div>
+              </div>
+              <div class="col">
+                <div class="headercenter">
+                  <span>CHATTERSEN</span>
+                </div>
+              </div>
+              <div class="col">
+                <div class="headerright badge badge-secondary float-end" id="scoreContainer" style="display: none">
+                  <label class="scoreLabel">Score:</label>
+                  <span class="scoreCounter text-success" id="score">0</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="row main-content">
+            <div id="loader" class="main-content">
+              <img class="loading-placeholder" src="/pics/forsenle/forsenspin.gif" alt="forsenSpin" />
+              <div class="loading-placeholder">Loading...</div>
+            </div>
+            <div id="game" class="main-content" style="display: none">
+              <div class="game-container control-container" id="gameControls">
+                <div class="text-body-secondary">Was this message sent</div>
+                <div class="game-button-holder">
+                  <button class="btn btn-primary btn-lg game-choice" data-comparator="-1"><i class="material-icons notranslate me-1">fast_rewind</i>Earlier</button>
+                  <span class="between-two-controls text-body-secondary">or</span>
+                  <button class="btn btn-primary btn-lg game-choice" data-comparator="1">Later<i class="material-icons notranslate ms-1">fast_forward</i></button>
+                </div>
+                <div class="text-body-secondary">than the one above?</div>
+              </div>
+            </div>
+            <div class="game-container gameover-container" id="gameOverArea" style="display: none">
+              <div class="gameover-content">
+                <h3 class="gameover-title">Game over!</h3>
+                <div class="gameover-text" id="gameOverFlavor">
+                  <!-- dynamic contents -->
+                </div>
+              </div>
+              <div class="gameover-controls btn-group-vertical">
+                <button type="button" class="btn btn-info" id="doShare"><i class="material-icons notranslate me-1">ios_share</i> Share your stats</button>
+                <button type="button" class="btn btn-primary" id="doReset"><i class="material-icons notranslate me-1">restart_alt</i> Start over</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-xl-3"></div>
+      </div>
+    </div>
+
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/chattersen.min.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MP43Y40GR6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MP43Y40GR6");
+    </script>
+  </body>
+</html>

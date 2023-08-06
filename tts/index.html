@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>forsen.horse/tts</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="Scuffed forsen TTS" />
+    <meta name="keywords" content="forsen.horse, forsen, horse, tts" />
+    <meta property="og:title" content="forsen.horse" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://forsen.horse/tts/" />
+    <meta property="og:image" content="https://forsen.horse/pics/ogimage.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:description" content="Scuffed forsen TTS" />
+
+    <link rel="apple-touch-icon" sizes="120x120" href="/pics/icon/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/pics/icon/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/pics/icon/favicon-16x16.png" />
+    <link rel="manifest" href="/pics/icon/site.webmanifest" />
+    <link rel="mask-icon" href="/pics/icon/safari-pinned-tab.svg" color="#c2694e" />
+    <link rel="shortcut icon" href="/pics/icon/favicon.ico" />
+    <meta name="apple-mobile-web-app-title" content="forsen.horse" />
+    <meta name="application-name" content="forsen.horse" />
+    <meta name="msapplication-TileColor" content="#c2694e" />
+    <meta name="msapplication-config" content="/pics/icon/browserconfig.xml" />
+    <meta name="theme-color" content="#ffffff" />
+
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/icons.css" />
+    <link rel="stylesheet" href="/tts/tts.min.css" />
+  </head>
+
+  <body>
+    <noscript><div class="alert alert-danger" role="alert">WARNING! JavaScript is disabled. This site will not work properly without it.</div></noscript>
+
+    <nav class="navbar navbar-expand-lg bg-body-tertiary mb-2">
+      <div class="container-fluid">
+        <a class="navbar-brand notranslate" href="#"><img src="/pics/horse.png" alt="logo" style="height: 24px; width: 24px" class="d-inline-block align-top" /> forsen.horse/tts</a>
+      </div>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-xl-4"></div>
+        <div class="col-xl-4">
+          <h5>Available words:</h5>
+          <p id="words"></p>
+          <div class="form-floating">
+            <textarea class="form-control" placeholder="text input" id="text" style="height: 100px"></textarea>
+            <label for="text">Text</label>
+            <button type="button" onclick="speak()" class="btn btn-primary mt-3">Speak</button>
+          </div>
+          <p id="output"></p>
+        </div>
+        <div class="col-xl-4"></div>
+      </div>
+    </div>
+
+    <script src="/js/howler.core.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/tts/tts.min.js"></script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MP43Y40GR6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MP43Y40GR6");
+    </script>
+  </body>
+</html>

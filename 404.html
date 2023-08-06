@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#" data-bs-theme="dark">
+  <head>
+    <title>404 Not Found</title>
+    <link rel="shortcut icon" href="/pics/horse.png" />
+    <style>
+      body {
+        width: 100%;
+        height: auto;
+        margin: 0;
+        padding: 2% 0;
+        background: #111;
+        color: white;
+        font-family: Lato, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+        font-size: 20px;
+      }
+      div.container {
+        width: 100%;
+        max-width: 600px;
+        margin: auto;
+        padding: 0;
+        display: flex;
+        flex-flow: column nowrap;
+        align-items: center;
+        justify-content: center;
+      }
+      img#garbage {
+        width: 100%;
+        height: auto;
+        max-height: 50vh;
+        max-width: 50vh;
+      }
+      a,
+      a:visited {
+        color: rgb(208, 164, 136);
+        cursor: pointer;
+        text-decoration: none;
+      }
+      a:active,
+      a:hover {
+        color: orange;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="margin: auto; display: flex; flex-flow: column; align-items: center; justify-content: center; width: 100%; max-width: 360px">
+      <img id="garbage" src="/pics/ogimage.png" alt="404" />
+      <h1>404</h1>
+      <a href="/">Go back to main page</a>
+    </div>
+    <script type="text/javascript">
+      let garbage = document.getElementById("garbage");
+      setTimeout(function () {
+        garbage.src = "/pics/horse.png";
+      }, 5000);
+    </script>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-MP43Y40GR6"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-MP43Y40GR6");
+    </script>
+  </body>
+</html>

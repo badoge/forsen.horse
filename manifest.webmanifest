@@ -1,0 +1,33 @@
+{
+  "theme_color": "#C48B8A",
+  "background_color": "#222222",
+  "display": "standalone",
+  "start_url": "https://forsen.horse/",
+  "scope": "https://forsen.horse/",
+  "name": "Forsle: your daily dose of Forsen",
+  "short_name": "Forsle",
+  "description": "Forsen-related game. Forsen mixes, news, big plays, tilts. Everything that is somewhat related to Forsen.",
+  "icons": [
+    {
+      "src": "https://forsen.horse/pics/forsenle/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "https://forsen.horse/pics/forsenle/icon-256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "https://forsen.horse/pics/forsenle/icon-384.png",
+      "sizes": "384x384",
+      "type": "image/png"
+    },
+    {
+      "src": "https://forsen.horse/pics/forsenle/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

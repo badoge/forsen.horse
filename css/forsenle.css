@@ -1,0 +1,576 @@
+/* field container for the game */
+
+body {
+  min-width: 250px;
+}
+
+.headercenter {
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  letter-spacing: 0.3rem;
+  text-align: center;
+  pointer-events: none;
+}
+
+.headerleft {
+  text-align: left;
+}
+
+.headerright {
+  text-align: right;
+}
+
+.header {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #4f4f52;
+}
+
+.headerbtn {
+  color: rgb(160, 160, 160);
+  border: none;
+  background: none;
+}
+
+.headerbtn:hover {
+  border: none;
+  background: none;
+}
+
+.panic-title {
+  text-shadow: 0 0 1px rgba(0, 0, 0, 0.5);
+}
+
+i {
+  vertical-align: middle;
+}
+
+a.no-decoration {
+  text-decoration: none;
+}
+
+/* helper table */
+
+div.user-color-list {
+  margin-top: 0.5em;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: stretch;
+  justify-content: flex-start;
+}
+
+div.user-color-list-element {
+  width: 50%;
+  flex: 1 0 auto;
+  border: 1px solid rgba(128, 128, 128, 0.5);
+  padding: 0.2em 1em;
+  display: flex;
+  align-items: center;
+}
+
+/* game area */
+
+div.main-content,
+div#mainGameSection {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  justify-content: center;
+}
+
+div.loading-placeholder {
+  font-size: 250%;
+  text-align: center;
+  color: gray;
+  margin: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+img.loading-placeholder {
+  width: 20%;
+  height: auto;
+  border: none;
+  margin: auto;
+  pointer-events: none;
+  user-select: none;
+}
+
+img.main-frame {
+  width: 100%;
+  height: auto;
+  max-height: 550px;
+  max-height: 65vh;
+  user-select: none;
+}
+
+.user-extended-info {
+  background-color: transparent;
+  width: 100%;
+}
+
+#frameInfoCard {
+  margin-top: 5px;
+}
+
+#frameInfoCard > div {
+  padding: 10px;
+}
+
+#frameGame {
+  font-size: 1.5em;
+}
+
+a#frameVod img {
+  width: 1.2em;
+  vertical-align: middle;
+}
+
+div.user-guess {
+  width: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+/* hard mode counter */
+
+div.user-guess-hard-mode {
+  margin: 0;
+  padding: 0.2em 0;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+div#hardModeCounter {
+  font-weight: bold;
+  margin-left: 0.3em;
+}
+
+/* guess input */
+
+div.user-guess-input {
+  justify-content: center;
+  width: 100%;
+  max-width: 450px;
+  margin: 0.6em auto;
+  padding: 0;
+}
+
+input#iAttempt {
+  max-width: 80%;
+  font-size: 150%;
+  margin: 0;
+}
+
+input#iAttempt:focus {
+  border-color: #9badbf !important;
+}
+
+div.bad-input {
+  box-shadow: 0 0 0 0.25rem rgb(255 90 127 / 25%);
+}
+
+div.input-group-prepend-fix,
+div.input-group-append-fix {
+  display: flex;
+}
+
+div.input-group-prepend-fix .btn {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+div.input-group-append-fix .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.autowidth {
+  width: auto;
+}
+
+div.user-guess-input-flipbox div.input-group-append {
+  align-self: center;
+}
+
+/* guess input popover fix */
+
+.custom-popover {
+  z-index: 1020;
+}
+
+.custom-popover .popover-body {
+  border-radius: 0.2em;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0px 0px 2px black;
+}
+
+.custom-popover .popover-arrow::before,
+.custom-popover .popover-arrow::after {
+  border-top-color: #e74c3c !important;
+  border-bottom-color: #e74c3c !important;
+}
+
+/* guess list */
+
+div.user-guess-history {
+  width: 80%;
+  padding: 0.2em 0;
+  display: flex;
+  flex-flow: column-reverse nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 140%;
+}
+
+/* guess lines */
+
+div.user-guess-example {
+  padding: 1em 0.3em 0.3em 0.3em;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+  border: 0;
+}
+
+div.user-guess-example-shrink {
+  padding-top: 0;
+}
+
+div.user-guess-attempt {
+  margin: auto;
+  padding: 0.3em;
+  width: 75%;
+  display: flex;
+  flex-flow: row nowrap;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-bottom: 1px solid gray;
+  opacity: 0.4;
+  transition: opacity 0.5s linear;
+  user-select: none;
+}
+
+div.user-guess-attempt:nth-last-child(2) {
+  opacity: 0.7;
+}
+
+div.user-guess-attempt:nth-last-child(1) {
+  opacity: 1;
+  animation: slight-bg-flicker ease-in-out 1s forwards;
+}
+
+div.user-guess-attempt:first-child {
+  border-bottom: none;
+}
+
+div.user-guess-attempt:hover {
+  opacity: 1;
+  background-color: rgba(255, 255, 255, 0.01) !important;
+}
+
+@keyframes slight-bg-flicker {
+  0% {
+    background-color: rgba(142, 125, 81, 0.1);
+  }
+  50% {
+    background-color: rgba(142, 125, 81, 0.2);
+  }
+  100% {
+    background-color: transparent;
+  }
+}
+
+/* squares */
+
+.ug-element {
+  flex: 0 auto;
+  padding: 0.2em;
+  margin: 0 0.5rem;
+  border: 1px solid rgba(64, 64, 64, 0.5);
+  border-radius: 6px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  vertical-align: middle;
+  background-color: inherit;
+  text-shadow: 0px 0px 2px black;
+}
+
+.ug-date {
+  animation: fadeInByOpacity 0.6s cubic-bezier(1, 0, 0.3, 0.5) forwards;
+}
+
+.ug-month {
+  animation: fadeInByOpacity 0.9s cubic-bezier(1, 0, 0.4, 0.5) forwards;
+}
+
+.ug-fullyear {
+  animation: fadeInByOpacity 1.2s cubic-bezier(1, 0, 0.5, 0.5) forwards;
+}
+
+.ug-direction {
+  border: 0;
+  animation: fadeInByOpacity 1.5s cubic-bezier(1, 0, 0.6, 0.5) forwards;
+  order: 10;
+  font-size: 120%;
+}
+
+.ug-correct {
+  background-color: rgb(43, 152, 30);
+}
+
+.ug-close {
+  background-color: rgb(131, 117, 45);
+}
+
+.ug-far {
+  background-color: rgb(144, 58, 33);
+}
+
+.ug-incorrect {
+  background-color: rgb(73, 73, 73);
+}
+
+.ug-scoots {
+  background-color: rgb(77, 160, 177);
+}
+
+.stat-text {
+  font-weight: bold;
+  color: rgb(223, 201, 151);
+}
+
+@keyframes fadeInByOpacity {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* high contrast mode */
+
+body.high-contrast-colors .ug-correct {
+  background-color: rgb(195, 122, 0);
+}
+
+body.high-contrast-colors .ug-close {
+  background-color: rgb(0, 167, 156);
+}
+
+body.high-contrast-colors .ug-far {
+  background-color: rgb(0, 76, 130);
+}
+
+body.high-contrast-colors .ug-scoots {
+  background-color: rgb(228, 255, 0);
+  color: black;
+}
+
+/* prestige section */
+
+#prestigeSection {
+  width: 100%;
+}
+
+.shadow-white {
+  text-shadow: 0px 0px 4px white;
+}
+
+.user-prestige-guess {
+  word-wrap: break-word;
+  word-break: break-all;
+}
+
+.user-prestige-guess-history {
+  width: 100%;
+  padding: 0 10%;
+  display: flex;
+  flex-flow: column-reverse nowrap;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+/* app.settings.dateOrder stuff */
+
+.fake-padder {
+  visibility: hidden;
+}
+
+.static {
+  animation: none !important;
+  transition: none !important;
+}
+
+body[data-date-order="DD-MM-YYYY"] div.ug-date {
+  order: 1;
+  animation: fadeInByOpacity 0.6s cubic-bezier(1, 0, 0.3, 0.5) forwards;
+}
+
+body[data-date-order="DD-MM-YYYY"] div.ug-month {
+  order: 2;
+  animation: fadeInByOpacity 0.9s cubic-bezier(1, 0, 0.4, 0.5) forwards;
+}
+
+body[data-date-order="DD-MM-YYYY"] div.ug-fullyear,
+body[data-date-order="MM-DD-YYYY"] div.ug-fullyear {
+  order: 3;
+  animation: fadeInByOpacity 1.2s cubic-bezier(1, 0, 0.5, 0.5) forwards;
+}
+
+body[data-date-order="MM-DD-YYYY"] div.ug-month {
+  order: 1;
+  animation: fadeInByOpacity 0.6s cubic-bezier(1, 0, 0.3, 0.5) forwards;
+}
+
+body[data-date-order="MM-DD-YYYY"] div.ug-date {
+  order: 2;
+  animation: fadeInByOpacity 0.9s cubic-bezier(1, 0, 0.4, 0.5) forwards;
+}
+
+body[data-date-order="YYYY-MM-DD"] div.ug-fullyear {
+  order: 1;
+  animation: fadeInByOpacity 0.6s cubic-bezier(1, 0, 0.3, 0.5) forwards;
+}
+
+body[data-date-order="YYYY-MM-DD"] div.ug-month {
+  order: 2;
+  animation: fadeInByOpacity 0.9s cubic-bezier(1, 0, 0.4, 0.5) forwards;
+}
+
+body[data-date-order="YYYY-MM-DD"] div.ug-date {
+  order: 3;
+  animation: fadeInByOpacity 1.2s cubic-bezier(1, 0, 0.5, 0.5) forwards;
+}
+
+/* "other games" placeholder */
+
+#otherGamesPlacer {
+  background: rgba(96, 96, 96, 0.3);
+}
+
+/* stats modal: content table */
+
+#statAccordion {
+  margin: 16px 0;
+}
+
+#statAccordion .accordion-button {
+  padding: 10px;
+}
+
+h2.accordion-header button:not(.collapsed) {
+  text-shadow: 0px 0px 1px black;
+}
+
+table.table-stats {
+  margin: 0;
+}
+
+/* modal headers icons */
+
+img.inline-flavor {
+  width: 1.4em;
+  vertical-align: bottom;
+}
+
+img.inline-smol {
+  width: 1.3em;
+  vertical-align: baseline;
+}
+
+/* highlighted stat elements */
+
+.stat-text {
+  font-weight: 700;
+}
+
+/* main image popout when clicked */
+
+.frame-expandable {
+  cursor: zoom-in;
+}
+
+.frame-parent-popout {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 100%;
+  height: auto;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  z-index: 1000;
+  padding: 1% 0;
+  cursor: zoom-out;
+  overflow: auto;
+}
+
+.frame-parent-popout img {
+  margin: auto;
+  width: 94%;
+  height: auto;
+  max-height: unset;
+  border: 8px ridge silver;
+}
+
+/* confetti */
+
+canvas#confetti-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1052 !important;
+  pointer-events: none;
+}
+
+::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bs-tertiary-color);
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bs-secondary-color);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bs-dark-bg-subtle);
+}
+
+/* title size fix for small screens */
+
+@media all and (max-width: 400px) {
+  .headercenter {
+    font-size: 28px;
+  }
+}
+
+@media all and (orientation: portrait) {
+  .frame-parent-popout img {
+    width: auto;
+    height: 95%;
+    text-align: center;
+  }
+}
