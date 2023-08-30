@@ -19,6 +19,7 @@
     <meta name="theme-color" content="#938271" />
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/icons.css" />
+    <link rel="stylesheet" href="/css/common.min.css" />
     <link rel="stylesheet" href="/css/soundboard.min.css" />
   </head>
 
@@ -60,70 +61,92 @@
       </div>
     </div>
 
-    <div class="container-fluid">
-      <div class="container">
-        <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-          <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
-            <img src="/pics/forsenle/icon.png" class="me-2" width="40" height="40" alt="forsenE" />
-            <span class="fs-4">forsen.horse</span>
+    <!-- sidebar nav -->
+    <aside class="sidebar-navbar">
+      <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+        <li class="nav-item">
+          <a href="/" class="nav-link" aria-current="page" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Forsle">
+            <img src="/pics/forsenle/icon.png" alt="Forsen.horse logo" class="logo" />
           </a>
-          <ul class="nav nav-pills">
-            <li class="nav-item">
-              <a href="#" class="nav-link active" aria-current="page"><i class="material-icons notranslate">campaign</i> Soundboard</a>
-            </li>
-            <li class="nav-item">
-              <a href="/" target="_blank" class="nav-link"><img src="/pics/forsenle/icon.png" width="20" height="20" alt="forsenE" /> Forsle</a>
-            </li>
-            <li class="nav-item">
-              <a href="/playlist/" target="_blank" class="nav-link"><i class="material-icons notranslate">shuffle</i> Playlist Shuffler</a>
-            </li>
-          </ul>
-        </header>
-      </div>
+        </li>
+        <li class="nav-item">
+          <a href="/unban-game/" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="The Appeal Challenge">
+            <i class="material-icons notranslate">receipt</i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/chattersen/" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Chattersen">
+            <i class="material-icons notranslate">question_answer</i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/playlist/" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Forsen's Playlist">
+            <i class="material-icons notranslate">queue_music</i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link active" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Soundboard">
+            <i class="material-icons notranslate">library_music</i>
+          </a>
+        </li>
+      </ul>
+    </aside>
 
-      <div class="row">
-        <div class="col-2"></div>
-        <div class="col-8">
-          <div class="d-flex">
-            <div class="form-floating mb-3 me-3" style="width: 100%; align-self: center">
-              <input type="text" class="form-control" oninput="search(event)" id="search" placeholder="Search" />
-              <label for="search">Search</label>
-            </div>
-            <div class="dropdown">
-              <button class="btn btn-secondary btn-lg dropdown-toggle" style="height: 58px" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
-                <i class="material-icons notranslate">settings</i>Settings
-              </button>
-              <div class="dropdown-menu dropdown-menu-end p-3" style="width: 300px; font-size: 0.9rem">
-                <div class="form-check form-switch">
-                  <input class="form-check-input" type="checkbox" role="switch" id="allowOverlap" />
-                  <label class="form-check-label" for="allowOverlap">Allow sounds to play over each other</label>
+    <main>
+      <div class="container-fluid" style="min-width: 333px">
+        <div class="container">
+          <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+            <a href="#" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+              <i class="material-icons notranslate fs-2 me-2">library_music</i>
+              <span class="fs-4">Soundboard</span>
+            </a>
+            <div class="d-flex flex-grow-1">
+              <div class="form-floating me-3" style="width: 100%; align-self: center">
+                <input type="text" class="form-control" oninput="search(event)" id="search" placeholder="Search" />
+                <label for="search">Search</label>
+              </div>
+              <div class="dropdown">
+                <button class="btn btn-secondary btn-lg dropdown-toggle" style="height: 58px" type="button" data-bs-toggle="dropdown" data-bs-auto-close="outside" aria-expanded="false">
+                  <i class="material-icons notranslate">settings</i>Settings
+                </button>
+                <div class="dropdown-menu dropdown-menu-end p-3" style="width: 300px; font-size: 0.9rem">
+                  <div class="form-check form-switch">
+                    <input class="form-check-input" type="checkbox" role="switch" id="allowOverlap" />
+                    <label class="form-check-label" for="allowOverlap">Allow sounds to play over each other</label>
+                  </div>
+                  <hr />
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="samplesFilter" id="showAll" checked />
+                    <label class="form-check-label" for="showAll"> Show all samples </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="samplesFilter" id="showWithMetadata" />
+                    <label class="form-check-label" for="showWithMetadata"> Show samples with metadata only </label>
+                  </div>
+                  <div class="form-check">
+                    <input class="form-check-input" type="radio" name="samplesFilter" id="showWithoutMetadata" />
+                    <label class="form-check-label" for="showWithoutMetadata"> Show samples without metadata only</label>
+                  </div>
+                  <hr />
+                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#aboutModal"><i class="material-icons notranslate">help_outline</i>About</button>
                 </div>
-                <hr />
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="samplesFilter" id="showAll" checked />
-                  <label class="form-check-label" for="showAll"> Show all samples </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="samplesFilter" id="showWithMetadata" />
-                  <label class="form-check-label" for="showWithMetadata"> Show samples with metadata only </label>
-                </div>
-                <div class="form-check">
-                  <input class="form-check-input" type="radio" name="samplesFilter" id="showWithoutMetadata" />
-                  <label class="form-check-label" for="showWithoutMetadata"> Show samples without metadata only</label>
-                </div>
-                <hr />
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#aboutModal"><i class="material-icons notranslate">help_outline</i>About</button>
               </div>
             </div>
-          </div>
-
-          <div id="dank"></div>
+          </header>
         </div>
-        <div class="col-2"></div>
+
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <div id="dank"></div>
+          </div>
+          <div class="col-2"></div>
+        </div>
       </div>
-    </div>
+    </main>
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/soundboard.js"></script>
+    <script src="/js/sidebar.js"></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MP43Y40GR6"></script>

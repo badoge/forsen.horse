@@ -27,27 +27,11 @@
 
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/icons.css" />
+    <link rel="stylesheet" href="/css/common.min.css" />
     <link rel="stylesheet" href="/css/playlist.min.css" />
   </head>
 
-  <body class="w-100 h-100">
-    <noscript><div class="alert alert-danger" role="alert">WARNING! JavaScript is disabled. This site will not work properly without it.</div></noscript>
-
-    <div class="modal fade" id="modalPanic" tabindex="-1">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header alert-warning">
-            <h5 class="modal-title alert-warning panic-title">⚠️ Attention!</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body" id="modalPanicBody"></div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
-
+  <body>
     <div class="modal fade" id="modalHelper" tabindex="-1">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -110,7 +94,7 @@
             <h5>Custom playlist</h5>
             You may provide a link to another YouTube playlist. The player will get the list of songs, and shuffle them up for you.
             <div class="input-group my-2">
-              <input type="text" class="form-control" id="inputPlaylistLink" placeholder="https://www.youtube.com/playlist?list=PLA4XEe9tV8qaSoneg5s5uJYo6HrWnT7T0" />
+              <input type="text" class="form-control" id="inputPlaylistLink" placeholder="i.e. https://youtube.com/playlist?list=PLA4XEe9tV8qaSoneg5s5uJYo6HrWnT7T0" />
               <button role="button" tabindex="0" id="doUseCustomPlaylist" class="btn btn-primary">Load</button>
             </div>
             <small class="d-block mb-2 text-danger fw-bold" id="customPlaylistError"></small>
@@ -125,98 +109,151 @@
       </div>
     </div>
 
-    <div class="d-flex flex-column h-100 w-100 m-0">
-      <!-- top bar: logo, buttons -->
-      <div class="container-fluid flex-grow-0 p-0 custom-navbar">
-        <div class="navbar bg-body-tertiary px-2 py-0 h-100">
-          <div class="navbar-brand">
-            <img src="/pics/forsenle/icon.png" class="logo" alt="logo" class="d-inline-block align-top" />
-            <span class="text-white align-middle">Forsen's Playlist Shuffler</span>
-            <button type="button" id="helperButton" class="btn headerbtn" data-bs-toggle="tooltip" data-bs-title="About">
-              <i class="material-icons notranslate">help_outline</i>
-            </button>
+    <div class="modal fade" id="modalPanic" tabindex="-1">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header alert-warning">
+            <h5 class="modal-title alert-warning panic-title">⚠️ Attention!</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="d-flex flex-wrap m-0 p-0" id="globalControls">
-            <button
-              disabled
-              type="button"
-              id="muteButton"
-              class="btn headerbtn"
-              title="Mute player"
-              data-bs-toggle="tooltip"
-              data-bs-title="Mute player"
-              onclick="this.firstElementChild.innerText = updateMuteState()"
-            >
-              <i class="material-icons notranslate">volume_up</i>
-            </button>
-            <input disabled type="range" min="0" max="100" value="50" step="1" id="volumeSlider" title="Volume" />
-            <button disabled role="button" tabindex="0" id="doPlay" class="btn btn-success d-flex mx-1" data-bs-toggle="tooltip" data-bs-title="Start playing">
-              <i class="material-icons notranslate my-auto align-center" id="doPlayButtonIcon">play_arrow</i>
-              <span class="my-auto" id="doPlayButtonText">Start playing</span>
-            </button>
-            <button disabled role="button" tabindex="0" id="doSkipSong" class="btn btn-warning d-flex mx-1" data-bs-toggle="tooltip" data-bs-title="Next song">
-              <i class="material-icons notranslate my-auto align-center">skip_next</i>
-              <span class="my-auto">Next song</span>
-            </button>
-            <div class="btn-group mx-1" id="ctrlGroupShuffle">
-              <button disabled role="button" tabindex="0" id="doShuffle" class="btn btn-info d-flex" data-bs-toggle="tooltip" data-bs-title="Reshuffle">
-                <i class="material-icons notranslate my-auto align-center">shuffle</i>
-                <span class="my-auto">Reshuffle</span>
-              </button>
-              <button
-                type="button"
-                class="btn btn-info dropdown-toggle dropdown-toggle-split"
-                data-bs-toggle="dropdown"
-                data-bs-auto-close="outside"
-                aria-expanded="false"
-                aria-labelledby="dropdownMenuClickableInside"
-              >
-                <span class="visually-hidden">Reshuffle options</span>
-              </button>
-              <div class="dropdown-menu dropdown-menu-end dropdown-menu-portrait-fix">
-                <div class="dropdown-item">
-                  <input class="form-check-input" type="checkbox" value="" id="optShuffleOnRefresh" />
-                  <label class="form-check-label ms-1" for="optShuffleOnRefresh"> Force new shuffle on reload </label>
-                </div>
-              </div>
-            </div>
-            <button role="button" tabindex="0" id="doChangePlaylist" class="btn btn-outline-info d-flex mx-1" data-bs-toggle="tooltip" data-bs-title="Change playlist">
-              <i class="material-icons notranslate my-auto align-center">post_add</i>
-              <span class="my-auto">Change playlist</span>
-            </button>
+          <div class="modal-body" id="modalPanicBody"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           </div>
-        </div>
-      </div>
-
-      <!-- main content: youtube player, playlist content -->
-      <div class="container-fluid main-content" id="loader">
-        <img src="/pics/forsenle/forsenspin.gif" alt="forsenSpin" />
-        <div>Loading...</div>
-      </div>
-      <div class="container-fluid main-content" id="content" style="display: none">
-        <div class="content-section" id="ytPlayerContainer">
-          <div id="YtPlayer"></div>
-        </div>
-        <div class="content-section" id="playlist">
-          <div class="fs-6 bg-body text-center my-2">
-            <i>Now playing:</i>
-            <a href="https://www.youtube.com/playlist?list=PLA4XEe9tV8qaSoneg5s5uJYo6HrWnT7T0" target="_blank" rel="noopener noreferrer" class="no-decoration" id="nowPlayingList">
-              original Forsen playlist
-            </a>
-          </div>
-          <ul class="list-group list-group-flush" id="playlistItems">
-            <!-- dynamic contents -->
-            <li class="list-group-item list-group-item-action active flex-column-nowrap align-items-start" id="playitem-name-1">
-              <p class="m-0" id="playitem-title-1">Video title</p>
-              <small class="yt-author" id="playitem-author-1">Channel name</small>
-            </li>
-          </ul>
         </div>
       </div>
     </div>
 
+    <!-- sidebar nav -->
+    <aside class="sidebar-navbar">
+      <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+        <li class="nav-item">
+          <a href="/" class="nav-link" aria-current="page" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Forsle">
+            <img src="/pics/forsenle/icon.png" alt="Forsen.horse logo" class="logo" />
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/unban-game/" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="The Appeal Challenge">
+            <i class="material-icons notranslate">receipt</i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/chattersen/" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Chattersen">
+            <i class="material-icons notranslate">question_answer</i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link active" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Forsen's Playlist">
+            <i class="material-icons notranslate">queue_music</i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/soundboard/" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Soundboard">
+            <i class="material-icons notranslate">library_music</i>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <main>
+      <noscript><div class="alert alert-danger" role="alert">WARNING! JavaScript is disabled. This site will not work properly without it.</div></noscript>
+
+      <div style="height: 100%; overflow: auto">
+        <div class="d-flex flex-column h-100 w-100 m-0">
+          <!-- top bar: logo, buttons -->
+          <div class="container-fluid flex-grow-0 p-0 custom-navbar">
+            <div class="navbar bg-body-tertiary px-2 py-0 h-100">
+              <div class="navbar-brand">
+                <i class="material-icons notranslate fs-2 align-middle">queue_music</i>
+                <span class="text-white align-middle">Forsen's Playlist Shuffler</span>
+                <button type="button" id="helperButton" class="btn headerbtn" data-bs-toggle="tooltip" data-bs-title="About">
+                  <i class="material-icons notranslate">help_outline</i>
+                </button>
+              </div>
+              <div class="d-flex flex-wrap m-0 p-0" id="globalControls">
+                <button
+                  disabled
+                  type="button"
+                  id="muteButton"
+                  class="btn headerbtn"
+                  title="Mute player"
+                  data-bs-toggle="tooltip"
+                  data-bs-title="Mute player"
+                  onclick="this.firstElementChild.innerText = updateMuteState()"
+                >
+                  <i class="material-icons notranslate">volume_up</i>
+                </button>
+                <input disabled type="range" min="0" max="100" value="50" step="1" id="volumeSlider" title="Volume" />
+                <button disabled role="button" tabindex="0" id="doPlay" class="btn btn-success d-flex mx-1" data-bs-toggle="tooltip" data-bs-title="Start playing">
+                  <i class="material-icons notranslate my-auto align-center" id="doPlayButtonIcon">play_arrow</i>
+                  <span class="my-auto" id="doPlayButtonText">Start playing</span>
+                </button>
+                <button disabled role="button" tabindex="0" id="doSkipSong" class="btn btn-warning d-flex mx-1" data-bs-toggle="tooltip" data-bs-title="Next song">
+                  <i class="material-icons notranslate my-auto align-center">skip_next</i>
+                  <span class="my-auto">Next song</span>
+                </button>
+                <div class="btn-group mx-1" id="ctrlGroupShuffle">
+                  <button disabled role="button" tabindex="0" id="doShuffle" class="btn btn-info d-flex" data-bs-toggle="tooltip" data-bs-title="Reshuffle">
+                    <i class="material-icons notranslate my-auto align-center">shuffle</i>
+                    <span class="my-auto">Reshuffle</span>
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-info dropdown-toggle dropdown-toggle-split"
+                    data-bs-toggle="dropdown"
+                    data-bs-auto-close="outside"
+                    aria-expanded="false"
+                    aria-labelledby="dropdownMenuClickableInside"
+                  >
+                    <span class="visually-hidden">Reshuffle options</span>
+                  </button>
+                  <div class="dropdown-menu dropdown-menu-end dropdown-menu-portrait-fix">
+                    <div class="dropdown-item">
+                      <input class="form-check-input" type="checkbox" value="" id="optShuffleOnRefresh" />
+                      <label class="form-check-label ms-1" for="optShuffleOnRefresh"> Force new shuffle on reload </label>
+                    </div>
+                  </div>
+                </div>
+                <button role="button" tabindex="0" id="doChangePlaylist" class="btn btn-outline-info d-flex mx-1" data-bs-toggle="tooltip" data-bs-title="Change playlist">
+                  <i class="material-icons notranslate my-auto align-center">post_add</i>
+                  <span class="my-auto">Change playlist</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- main content: youtube player, playlist content -->
+          <div class="container-fluid main-content" id="loader">
+            <img src="/pics/forsenle/forsenspin.gif" alt="forsenSpin" />
+            <div>Loading...</div>
+          </div>
+          <div class="container-fluid main-content" id="content" style="display: none">
+            <div class="content-section" id="ytPlayerContainer">
+              <div id="YtPlayer"></div>
+            </div>
+            <div class="content-section" id="playlist">
+              <div class="fs-6 bg-body text-center my-2">
+                <i>Now playing:</i>
+                <a href="https://www.youtube.com/playlist?list=PLA4XEe9tV8qaSoneg5s5uJYo6HrWnT7T0" target="_blank" rel="noopener noreferrer" class="no-decoration" id="nowPlayingList">
+                  original Forsen playlist
+                </a>
+              </div>
+              <ul class="list-group list-group-flush" id="playlistItems">
+                <!-- dynamic contents -->
+                <li class="list-group-item list-group-item-action active flex-column-nowrap align-items-start" id="playitem-name-1">
+                  <p class="m-0" id="playitem-title-1">Video title</p>
+                  <small class="yt-author" id="playitem-author-1">Channel name</small>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/playlist.min.js"></script>
+    <script src="/js/sidebar.js"></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MP43Y40GR6"></script>

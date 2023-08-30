@@ -1,7 +1,8 @@
 /* field container for the game */
 
-body {
+main {
   min-width: 250px;
+  padding-right: 4em;
 }
 
 .headercenter {
@@ -572,5 +573,12 @@ canvas#confetti-canvas {
     width: auto;
     height: 95%;
     text-align: center;
+  }
+}
+
+/* sidebar-related alignment fix */
+@media all and (max-width: 1200px), all and (orientation: portrait) {
+  main {
+    padding-right: 0;
   }
 }

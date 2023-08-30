@@ -536,7 +536,7 @@ playlistModalButton.addEventListener("click", () => {
   playlistModalDialog.show();
 });
 
-document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(
+document.querySelectorAll('main [data-bs-toggle="tooltip"]').forEach(
   (elem) =>
     new bootstrap.Tooltip(elem, {
       placement: "bottom",

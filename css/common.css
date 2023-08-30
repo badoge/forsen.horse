@@ -1,0 +1,79 @@
+html,
+body {
+  height: 100%; /*  older browsers xdd */
+  height: 100vh; /* mobile friends xdd */
+}
+
+body {
+  width: 100%;
+  display: flex;
+  flex-flow: row nowrap;
+}
+
+main {
+  flex: 1 0 0;
+  height: 100%;
+  overflow: auto;
+}
+
+/* sidebar/navbar */
+.sidebar-navbar {
+  overflow-x: hidden;
+  overflow-y: auto;
+  height: 100%;
+  width: 4rem;
+  min-width: 4rem;
+  display: flex;
+  flex-flow: column nowrap;
+  border-right: 1px solid var(--bs-border-color);
+  background: var(--bs-tertiary-bg);
+  color: var(--bs-emphasis-color);
+  box-shadow: 2px 2px 1rem rgba(0, 0, 0, 0.2);
+}
+.sidebar-navbar .nav-link {
+  min-height: 4rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--bs-border-color);
+  border-radius: 0;
+  color: var(--bs-secondary-text-emphasis);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.sidebar-navbar .nav-link.restricted {
+  opacity: 33%;
+  cursor: not-allowed;
+}
+.sidebar-navbar .nav-link:hover,
+.sidebar-navbar .nav-link:active {
+  color: var(--bs-emphasis-color);
+}
+.sidebar-navbar .material-icons {
+  font-size: 2rem;
+}
+.sidebar-navbar img.logo {
+  width: 2rem;
+  height: auto;
+  filter: none;
+  transition: filter 0.2s ease;
+}
+.sidebar-navbar .nav-link:active img.logo,
+.sidebar-navbar .nav-link:hover img.logo {
+  filter: brightness(1.2);
+}
+
+@media all and (max-width: 1200px), all and (orientation: portrait) {
+  .sidebar-navbar {
+    width: 3.5rem;
+    min-width: 3.5rem;
+  }
+  .sidebar-navbar .nav-link {
+    min-height: 2rem;
+  }
+  .sidebar-navbar .material-icons {
+    font-size: 1.5rem;
+  }
+  .sidebar-navbar img.logo {
+    width: 1.5rem;
+  }
+}

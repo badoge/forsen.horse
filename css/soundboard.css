@@ -3,6 +3,10 @@ i {
   pointer-events: none;
 }
 
+header > a {
+  flex-grow: 3;
+}
+
 ::-webkit-scrollbar {
   height: 10px;
   width: 10px;

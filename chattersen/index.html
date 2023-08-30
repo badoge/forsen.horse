@@ -21,6 +21,7 @@
 
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/icons.css" />
+    <link rel="stylesheet" href="/css/common.min.css" />
     <link rel="stylesheet" href="/css/chattersen.min.css" />
   </head>
 
@@ -67,79 +68,113 @@
       </div>
     </div>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-xl-3"></div>
+    <!-- sidebar nav -->
+    <aside class="sidebar-navbar">
+      <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+        <li class="nav-item">
+          <a href="/" class="nav-link" aria-current="page" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Forsle">
+            <img src="/pics/forsenle/icon.png" alt="Forsen.horse logo" class="logo" />
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/unban-game/" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="The Appeal Challenge">
+            <i class="material-icons notranslate">receipt</i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link active" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Chattersen">
+            <i class="material-icons notranslate">question_answer</i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/playlist/" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Forsen's Playlist">
+            <i class="material-icons notranslate">queue_music</i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/soundboard/" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Soundboard">
+            <i class="material-icons notranslate">library_music</i>
+          </a>
+        </li>
+      </ul>
+    </aside>
 
-        <div class="col-xl-6">
-          <div class="container-fluid p-0">
-            <div class="row header">
-              <div class="col">
-                <div class="headerleft">
-                  <button
-                    type="button"
-                    id="aboutButton"
-                    class="btn headerbtn btn-outline-light"
-                    data-bs-toggle="tooltip"
-                    data-bs-delay="200"
-                    data-bs-placement="bottom"
-                    data-bs-title="About"
-                  >
-                    <i class="material-icons notranslate">help_outline</i>
-                  </button>
+    <main>
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-3"></div>
+
+          <div class="col-xl-6">
+            <div class="container-fluid p-0">
+              <div class="row header">
+                <div class="col">
+                  <div class="headerleft">
+                    <button
+                      type="button"
+                      id="aboutButton"
+                      class="btn headerbtn btn-outline-light"
+                      data-bs-toggle="tooltip"
+                      data-bs-delay="200"
+                      data-bs-placement="bottom"
+                      data-bs-title="About"
+                    >
+                      <i class="material-icons notranslate">help_outline</i>
+                    </button>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="headercenter">
+                    <span>CHATTERSEN</span>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="headerright badge badge-secondary float-end" id="scoreContainer" style="display: none">
+                    <label class="scoreLabel">Score:</label>
+                    <span class="scoreCounter text-success" id="score">0</span>
+                  </div>
                 </div>
               </div>
-              <div class="col">
-                <div class="headercenter">
-                  <span>CHATTERSEN</span>
+            </div>
+
+            <div class="row main-content">
+              <div id="loader" class="main-content">
+                <img class="loading-placeholder" src="/pics/forsenle/forsenspin.gif" alt="forsenSpin" />
+                <div class="loading-placeholder">Loading...</div>
+              </div>
+              <div id="game" class="main-content" style="display: none">
+                <div class="game-container control-container" id="gameControls">
+                  <div class="text-body-secondary">Was this message sent</div>
+                  <div class="game-button-holder">
+                    <button class="btn btn-primary btn-lg game-choice" data-comparator="-1"><i class="material-icons notranslate me-1">fast_rewind</i>Earlier</button>
+                    <span class="between-two-controls text-body-secondary">or</span>
+                    <button class="btn btn-primary btn-lg game-choice" data-comparator="1">Later<i class="material-icons notranslate ms-1">fast_forward</i></button>
+                  </div>
+                  <div class="text-body-secondary">than the one above?</div>
                 </div>
               </div>
-              <div class="col">
-                <div class="headerright badge badge-secondary float-end" id="scoreContainer" style="display: none">
-                  <label class="scoreLabel">Score:</label>
-                  <span class="scoreCounter text-success" id="score">0</span>
+              <div class="game-container gameover-container" id="gameOverArea" style="display: none">
+                <div class="gameover-content">
+                  <h3 class="gameover-title">Game over!</h3>
+                  <div class="gameover-text" id="gameOverFlavor">
+                    <!-- dynamic contents -->
+                  </div>
+                </div>
+                <div class="gameover-controls btn-group-vertical">
+                  <button type="button" class="btn btn-info" id="doShare"><i class="material-icons notranslate me-1">ios_share</i> Share your stats</button>
+                  <button type="button" class="btn btn-primary" id="doReset"><i class="material-icons notranslate me-1">restart_alt</i> Start over</button>
                 </div>
               </div>
             </div>
           </div>
 
-          <div class="row main-content">
-            <div id="loader" class="main-content">
-              <img class="loading-placeholder" src="/pics/forsenle/forsenspin.gif" alt="forsenSpin" />
-              <div class="loading-placeholder">Loading...</div>
-            </div>
-            <div id="game" class="main-content" style="display: none">
-              <div class="game-container control-container" id="gameControls">
-                <div class="text-body-secondary">Was this message sent</div>
-                <div class="game-button-holder">
-                  <button class="btn btn-primary btn-lg game-choice" data-comparator="-1"><i class="material-icons notranslate me-1">fast_rewind</i>Earlier</button>
-                  <span class="between-two-controls text-body-secondary">or</span>
-                  <button class="btn btn-primary btn-lg game-choice" data-comparator="1">Later<i class="material-icons notranslate ms-1">fast_forward</i></button>
-                </div>
-                <div class="text-body-secondary">than the one above?</div>
-              </div>
-            </div>
-            <div class="game-container gameover-container" id="gameOverArea" style="display: none">
-              <div class="gameover-content">
-                <h3 class="gameover-title">Game over!</h3>
-                <div class="gameover-text" id="gameOverFlavor">
-                  <!-- dynamic contents -->
-                </div>
-              </div>
-              <div class="gameover-controls btn-group-vertical">
-                <button type="button" class="btn btn-info" id="doShare"><i class="material-icons notranslate me-1">ios_share</i> Share your stats</button>
-                <button type="button" class="btn btn-primary" id="doReset"><i class="material-icons notranslate me-1">restart_alt</i> Start over</button>
-              </div>
-            </div>
-          </div>
+          <div class="col-xl-3"></div>
         </div>
-
-        <div class="col-xl-3"></div>
       </div>
-    </div>
+    </main>
 
     <script src="/js/bootstrap.bundle.min.js"></script>
     <script src="/js/chattersen.min.js"></script>
+    <script src="/js/sidebar.js"></script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-MP43Y40GR6"></script>
