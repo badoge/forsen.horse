@@ -1712,7 +1712,7 @@ window.onload = function () {
   });
 
   // initialize dynamic bootstrap elements
-  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
+  const tooltipTriggerList = document.querySelectorAll('main [data-bs-toggle="tooltip"]');
   Array.from(tooltipTriggerList).forEach((tooltipTriggerEl) => new bootstrap.Tooltip(tooltipTriggerEl));
 
   /* // disabled until further notice
