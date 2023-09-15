@@ -1,0 +1,44 @@
+[
+  {
+    "id": "meme1",
+    "title": "YOU LAUGH YOU GET MARRIED | FUNNIEST MEME COMPILATIONS FROM TIKTOK",
+    "avatar": "avatar1.jpg",
+    "author": "Le Funny TV",
+    "likes": 13001
+  },
+  {
+    "id": "meme2",
+    "avatar": "avatar2.jpg",
+    "title": "Learn programming in 5 minutes (GONE WRONG)",
+    "author": "hackerman x",
+    "likes": 51684
+  },
+  {
+    "id": "truck",
+    "avatar": "avatar3.webp",
+    "title": "Top 10 shocking accidents (number 3 will blow your mind!)",
+    "author": "Discovery channel",
+    "likes": 98071
+  },
+  {
+    "id": "paint",
+    "title": "12 hours of paint drying (ASMR)",
+    "avatar": "avatar4.jpg",
+    "author": "Visual ASMR",
+    "likes": 29774
+  },
+  {
+    "id": "chess",
+    "avatar": "avatar_chess.png",
+    "title": "2023 Chess World Championship - BEST GAMES",
+    "author": "King's Gambit Club",
+    "likes": 105
+  },
+  {
+    "id": "arena",
+    "title": "LAST MAN STANDING WINS $99999999 (probably) - Arena Wars",
+    "avatar": "avatar_arena.png",
+    "author": "PewPewPew",
+    "likes": 778184
+  }
+]

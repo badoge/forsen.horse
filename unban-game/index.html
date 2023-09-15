@@ -1,53 +1,139 @@
 <!DOCTYPE html>
-<html lang="en" data-bs-theme="dark">
+<html lang="en" data-bs-theme="light">
   <head>
-    <title>...</title>
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, shrink-to-fit=no" />
+    <meta charset=" utf-8" />
+
     <link rel="stylesheet" href="/css/bootstrap.min.css" />
     <link rel="stylesheet" href="/css/icons.css" />
     <link rel="stylesheet" href="/css/common.min.css" />
+
+    <script type="text/javascript" src="/js/bootstrap.bundle.min.js"></script>
+    
+		<link href="./_app/immutable/assets/2.6fe6225c.css" rel="stylesheet">
+		<link rel="modulepreload" href="./_app/immutable/entry/start.26352b71.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/index.c493b1f0.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/singletons.044c73f1.js">
+		<link rel="modulepreload" href="./_app/immutable/chunks/environment.3dcad5b5.js">
+		<link rel="modulepreload" href="./_app/immutable/entry/app.b0a0da36.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/0.b850627f.js">
+		<link rel="modulepreload" href="./_app/immutable/nodes/2.56512383.js"><title>The Appeal Challenge</title><!-- HEAD_svelte-60f3ds_START --><link rel="icon" href="/unban-game/favicon.ico"><meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"><meta name="description" content="A game where you try to send a message in a livestream chat room, and face the consequences"><meta name="keywords" content="forsen, chat, twitch, stream, game, mods, ban, appeal, password, title, games"><!-- HEAD_svelte-60f3ds_END -->
   </head>
-  <body>
+
+  <body data-sveltekit-preload-data="hover">
+    <noscript>
+      <div class="alert alert-danger" role="alert">⚠ This web application will not run without Javascript.</div>
+    </noscript>
+
     <aside class="sidebar-navbar">
       <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
         <li class="nav-item">
-          <a href="/" class="nav-link" aria-current="page" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Forsle">
+          <a
+            href="/"
+            class="nav-link"
+            aria-current="page"
+            title=""
+            data-bs-toggle="tooltip"
+            data-bs-placement="right"
+            data-bs-original-title="Forsle"
+          >
             <img src="/pics/forsenle/icon.png" alt="Forsen.horse logo" class="logo" />
           </a>
         </li>
         <li class="nav-item">
-          <a href="#" class="nav-link active" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="The Appeal Challenge">
+          <a
+            href="#"
+            class="nav-link active"
+            title=""
+            data-bs-toggle="tooltip"
+            data-bs-placement="right"
+            data-bs-original-title="The Appeal Challenge"
+          >
             <i class="material-icons notranslate">receipt</i>
           </a>
         </li>
         <li class="nav-item">
-          <a href="/chattersen/" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Chattersen">
+          <a
+            href="/chattersen/"
+            class="nav-link"
+            title=""
+            data-bs-toggle="tooltip"
+            data-bs-placement="right"
+            data-bs-original-title="Chattersen"
+          >
             <i class="material-icons notranslate">question_answer</i>
           </a>
         </li>
         <li class="nav-item">
-          <a href="/playlist/" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Forsen's Playlist">
+          <a
+            href="/playlist/"
+            class="nav-link"
+            title=""
+            data-bs-toggle="tooltip"
+            data-bs-placement="right"
+            data-bs-original-title="Forsen's Playlist"
+          >
             <i class="material-icons notranslate">queue_music</i>
           </a>
         </li>
         <li class="nav-item">
-          <a href="/soundboard/" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Soundboard">
+          <a
+            href="/soundboard/"
+            class="nav-link"
+            title=""
+            data-bs-toggle="tooltip"
+            data-bs-placement="right"
+            data-bs-original-title="Soundboard"
+          >
             <i class="material-icons notranslate">library_music</i>
           </a>
         </li>
       </ul>
     </aside>
+
     <main class="d-flex">
-      <div class="m-auto d-flex flex-column align-items-center">
-        <div>
-          <img src="/pics/etc/kuk.webp" alt="Let him kuk" />
-        </div>
-        <h1>Hold on, I'm kuking...</h1>
-        <p>This game is under development.</p>
-      </div>
+      <div style="display: contents">
+
+
+
+
+<div class="loader-container svelte-v14v2b"><h1>Getting ready...</h1>
+    <div class="spinner-border svelte-v14v2b" role="status"><span class="visually-hidden">Loading...</span></div></div>
+
+
+			
+			<script>
+				{
+					__sveltekit_484506 = {
+						assets: "/unban-game",
+						base: new URL(".", location).pathname.slice(0, -1),
+						env: {}
+					};
+
+					const element = document.currentScript.parentElement;
+
+					const data = [null,null];
+
+					Promise.all([
+						import("./_app/immutable/entry/start.26352b71.js"),
+						import("./_app/immutable/entry/app.b0a0da36.js")
+					]).then(([kit, app]) => {
+						kit.start(app, element, {
+							node_ids: [0, 2],
+							data,
+							form: null,
+							error: null
+						});
+					});
+				}
+			</script>
+		</div>
     </main>
 
-    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript">
+      if (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches) {
+        document.documentElement.dataset.bsTheme = "dark";
+      }
+    </script>
     <script src="/js/sidebar.js"></script>
   </body>
 </html>
