@@ -17,10 +17,6 @@ The website is actually a bunch of Forsen-related stuff. "Games and shit", as so
   * Forsen does not type in his own chat very often. But when he does... Wait, really, when?
   * You get a couple of messages from Forsen's logs. You have to determine which message was sent earlier.
   * See how long you can keep up without a mistake.
-* [Chattersen](https://forsen.horse/chattersen/)
-  * Forsen does not type in his own chat very often. But when he does... Wait, really, when?
-  * You get a couple of messages from Forsen's logs. You have to determine which message was sent earlier.
-  * See how long you can keep up without a mistake.
 * [Playlist shuffler](https://forsen.horse/playlist/)
   * Web-based YouTube jukebox. Designed to be as simple as possible.
   * Originally designed to shuffle songs from [Forsen's DMCA-free playlist](https://www.youtube.com/playlist?list=PLA4XEe9tV8qaSoneg5s5uJYo6HrWnT7T0), later expanded to support any playlist
