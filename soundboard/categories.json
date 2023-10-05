@@ -11,6 +11,7 @@
     "rage": { "class": "btn-danger", "description": "" },
     "random singing": { "class": "btn-info", "description": "" },
     "random statements": { "class": "btn-info", "description": "" },
+    "forsen": { "class": "btn-success", "description": "forsen" },
     "snus+forsen build": { "class": "btn-info", "description": "" },
     "sven": { "class": "btn-info", "description": "" },
     "uncategorized": { "class": "btn-info", "description": "" },
