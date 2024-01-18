@@ -82,7 +82,12 @@ function createNodeOfMessage(message = {}, hidden = true) {
   text.classList = "msg-text";
   text.innerHTML = emotify(message.text);
   const tooltips = Array.from(text.querySelectorAll("img.chat-emote"));
-  message.tooltips = tooltips.map((t) => new bootstrap.Tooltip(t));
+  message.tooltips = tooltips.map(
+    (t) =>
+      new bootstrap.Tooltip(t, {
+        trigger: "hover",
+      })
+  );
   top.appendChild(text);
 
   // BOTTOM: sent at, channel name

@@ -856,7 +856,9 @@ const app = {
           tooltipNode.prop("data-bs-title", "This can only be changed before the game starts!");
           tooltipNode.attr("data-bs-toggle", "tooltip");
           tooltipNode.attr("data-bs-placement", "left");
-          const t = new bootstrap.Tooltip(tooltipNode);
+          const t = new bootstrap.Tooltip(tooltipNode, {
+            trigger: "hover",
+          });
           app.html.dynamic.tooltipOfHardMode = t;
           app.tooltips.push(t);
         }
