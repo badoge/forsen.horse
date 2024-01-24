@@ -1,4 +1,4 @@
-# <img src="https://github.com/badoge/forsen.horse/assets/18620902/06bef112-7f7d-4319-9dd5-05f7a8afd4d4" width="26"> forsen.horse
+# [<img src="https://github.com/badoge/forsen.horse/assets/18620902/06bef112-7f7d-4319-9dd5-05f7a8afd4d4" width="26">](https://forsen.horse/) [forsen.horse](https://forsen.horse/)
 
 This repository is the source of [forsen.horse](https://forsen.horse/) website. It was built using [GitHub Pages](https://pages.github.com/).
 
