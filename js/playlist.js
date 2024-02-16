@@ -420,7 +420,10 @@ function onPlayerStateChange(event) {
 function waitAndSkipSong(time = 2000) {
   clearTimeout(stuckControl);
   stuckControl = setTimeout(() => {
-    playNextSong(true);
+    if (player && player.getPlayerState() < 0) {
+      // -1 = player not started -> probably because "video unavailable" or such
+      playNextSong(true);
+    }
   }, time);
 }
 
