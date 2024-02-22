@@ -292,7 +292,7 @@ function playNextSong(force = false) {
       elem.scrollIntoViewIfNeeded(false);
     } else if (elem.scrollIntoView) {
       // simulate same behavior as scrollIntoViewIfNeeded for firefox users:
-      element.scrollIntoView({ behavior: "instant", block: "nearest", inline: "nearest" });
+      elem.scrollIntoView({ behavior: "instant", block: "nearest", inline: "nearest" });
     }
   });
   playlist.saveIndex();
