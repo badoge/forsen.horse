@@ -290,6 +290,9 @@ function playNextSong(force = false) {
     if (elem.scrollIntoViewIfNeeded) {
       // scrollIntoView works like ass, scrollIntoViewIfNeeded is not supported by firefox
       elem.scrollIntoViewIfNeeded(false);
+    } else if (elem.scrollIntoView) {
+      // simulate same behavior as scrollIntoViewIfNeeded for firefox users:
+      element.scrollIntoView({ behavior: "instant", block: "nearest", inline: "nearest" });
     }
   });
   playlist.saveIndex();
