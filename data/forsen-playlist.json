@@ -1,4 +1,92 @@
 [{
+  "title": "#3 - Before Every Load",
+  "channel": "quark",
+  "id": "FL9ocieCNjM"
+}, {
+  "title": "Sky Rogue OST - Angle of Attack (Temperate Combat)",
+  "channel": "Pete Lepley (FKA Phonetic Hero)",
+  "id": "zvJpw5p8VU8"
+}, {
+  "title": "Sky Rogue OST - Cleared for Takeoff (Temperate Flight)",
+  "channel": "Pete Lepley (FKA Phonetic Hero)",
+  "id": "v-mZqtMHXrw"
+}, {
+  "title": "Borislav Slavov - Baldur's Gate 3 OST - Battle Music 3",
+  "channel": "Bob Green",
+  "id": "wQZWC6Lx1MQ"
+}, {
+  "title": "The Legend of Dragoon (PS1) OST #03 - Ruined Seles (Intro Theme) [HQ]",
+  "channel": "Phoebius's VGM",
+  "id": "x4DYTjtZERM"
+}, {
+  "title": "Roboquest Game Soundtrack Track 11 - Data [OST]",
+  "channel": "GameVersumOST",
+  "id": "32S-HKP6N-0"
+}, {
+  "title": "Roboquest Game Soundtrack Track 09 - Forced And Natural [OST]",
+  "channel": "GameVersumOST",
+  "id": "9bClueG0cN4"
+}, {
+  "title": "Roboquest Game Soundtrack Track 08 - DDoS [OST]",
+  "channel": "GameVersumOST",
+  "id": "6CzZZVp3-Dk"
+}, {
+  "title": "Roboquest Game Soundtrack Track 07 - Brilliant [OST]",
+  "channel": "GameVersumOST",
+  "id": "GesNbhXWKHU"
+}, {
+  "title": "Roboquest Game Soundtrack Track 05 - Act [OST]",
+  "channel": "GameVersumOST",
+  "id": "Ro7X0YjArmE"
+}, {
+  "title": "Clock Town, Third Day - The Legend of Zelda: Majora's Mask",
+  "channel": "Video Games Music",
+  "id": "AwJrkw7PzoU"
+}, {
+  "title": "Clock Town, Second Day - The Legend of Zelda: Majora's Mask",
+  "channel": "Video Games Music",
+  "id": "fWtoCsh0lJg"
+}, {
+  "title": "068 - Dialga's Fight to the Finish! - (Pokémon Mystery Dungeon - Explorers of Sky)",
+  "channel": "Shinx",
+  "id": "bPGuiZ48PbA"
+}, {
+  "title": "Color Your Night - Persona 3 Reload Original Soundtrack",
+  "channel": "Compendium",
+  "id": "5SyUwkZQd3s"
+}, {
+  "title": "This Mysterious Feeling - Persona 3 Reload Original Soundtrack",
+  "channel": "Compendium",
+  "id": "5TC6pEsHmTw"
+}, {
+  "title": "Space Station 13 Music - Title3",
+  "channel": "Hugo",
+  "id": "YKVmXn-Gv0M"
+}, {
+  "title": "Space Station 13 Music - Phoron Will Make Us Rich",
+  "channel": "Hugo",
+  "id": "4goUdEQ5ifA"
+}, {
+  "title": "meganeko - The Cyber Grind (Ultrakill Soundtrack)",
+  "channel": "meganeko",
+  "id": "e9EqU9y69vU"
+}, {
+  "title": "Pokemon Black & White Music: Driftveil City Music",
+  "channel": "NexGenGama42",
+  "id": "2YZ1ouxhzaM"
+}, {
+  "title": "Tekken 7 Cave of Enlightenment Round 1&2 Theme",
+  "channel": "Madara521",
+  "id": "22JQjvibxok"
+}, {
+  "title": "15 - Somnium Aetatis | The Guild 3 - Soundtrack",
+  "channel": "Smoky Newt'",
+  "id": "lYOkF7LrYhQ"
+}, {
+  "title": "06 - Trivium | The Guild 3 - Soundtrack",
+  "channel": "Smoky Newt'",
+  "id": "nZLGL2pf8iE"
+}, {
   "title": "Crypt of the Necrodancer OST - Mausoleum Mash (1-3)",
   "channel": "dannyBstyle",
   "id": "Xa90OVJkBos"
@@ -52,7 +140,7 @@
   "id": "_-NcLHvn2I0"
 }, {
   "title": "Pizza Tower OST - Yeehaw DeliveryBoy (FastFood Saloon)",
-  "channel": "Gallant Goon",
+  "channel": "lakglsdhj",
   "id": "M-dr4viC_hY"
 }, {
   "title": "Moon Harvest (Rimworld OST)",
@@ -128,7 +216,7 @@
   "id": "UOLvOgzZF6E"
 }, {
   "title": "Pizza Tower OST - The Death That I Deservioli (Lap 2)",
-  "channel": "Gallant Goon",
+  "channel": "lakglsdhj",
   "id": "v8Tj15iSHbM"
 }, {
   "title": "Shantae - ♂SLAVE♂FACTORY♂",
@@ -251,10 +339,6 @@
   "channel": "Toby Fox - Topic",
   "id": "q-5cXVcCOUs"
 }, {
-  "title": "meganeko - The Cyber Grind (Ultrakill Soundtrack)",
-  "channel": "meganeko",
-  "id": "e9EqU9y69vU"
-}, {
   "title": "A CYBER'S WORLD?",
   "channel": "Toby Fox - Topic",
   "id": "In3y0C7mQvA"
@@ -286,10 +370,6 @@
   "title": "Old RuneScape Soundtrack: Gnome Theme",
   "channel": "OldScapeMusic",
   "id": "8M7pL6ucR9A"
-}, {
-  "title": "Borislav Slavov - Baldur's Gate 3 OST - Battle Music 3",
-  "channel": "Bob Green",
-  "id": "wQZWC6Lx1MQ"
 }, {
   "title": "01 Baldur's Gate 3 Original Soundtrack - Main Theme Part I",
   "channel": "Borislav Slavov",
@@ -363,8 +443,7 @@
   "channel": "GilvaSunner: Archive",
   "id": "ycaVAIJNpGE"
 }, {
-  "title": "Dark Souls 3 OST - Abyss Watchers [High Quality]",
-  "channel": "GidrahMusic",
+  "title": "Deleted video",
   "id": "slzTJtj4iG8"
 }, {
   "title": "Super Street Fighter II OST Cammy Theme",
@@ -500,7 +579,7 @@
   "id": "7SKB6HKJnwQ"
 }, {
   "title": "Soulstone Survivors (OST) - Soulstone",
-  "channel": "Shitto",
+  "channel": "Envy",
   "id": "XdBo-Cx0G2M"
 }, {
   "title": "Street Fighter 6 Dhalsim Theme - The Great Sunlight",
@@ -567,16 +646,13 @@
   "channel": "Jack",
   "id": "3zEeJ2X0uFg"
 }, {
-  "title": "Dark Souls 2 OST - Main Menu [HQ]",
-  "channel": "Ivarov23",
+  "title": "Deleted video",
   "id": "dKQ3aIPP7-0"
 }, {
-  "title": "Dark Souls 3 OST Main Theme",
-  "channel": "Mekkah Dee",
+  "title": "Deleted video",
   "id": "a0X0YA6ZfW4"
 }, {
-  "title": "Dark Souls 2 OST - Aldia, Scholar of the First Sin [HQ]",
-  "channel": "Ivarov23",
+  "title": "Deleted video",
   "id": "jLZ18bLK0EA"
 }, {
   "title": "Darkest Dungeon II OST - \"Main Theme\" (2023) HQ Official",
@@ -631,7 +707,7 @@
   "channel": "Video Games Music",
   "id": "wDVZW-m6a-o"
 }, {
-  "title": "Bloodborne - Living Failures",
+  "title": "Living Failures",
   "channel": "dudewhereismyspoon",
   "id": "NiboHWwr12M"
 }, {
@@ -775,7 +851,7 @@
   "channel": "Akira Yamaoka - Topic",
   "id": "CtYvZGK_ZEs"
 }, {
-  "title": "[ 다크타이드 OST ] DISPOSAL UNITIMPERIUM MIX",
+  "title": "[ Darktide OST ] DISPOSAL UNIT (IMPERIUM MIX)",
   "channel": "Kestrel",
   "id": "ZnOREzwYYP0"
 }, {
@@ -812,7 +888,7 @@
   "id": "yUw36wY8fMw"
 }, {
   "title": "Pizza Tower OST - It's Pizza Time!",
-  "channel": "Gallant Goon",
+  "channel": "lakglsdhj",
   "id": "B7gGacb8cO4"
 }, {
   "title": "Clock Town, First Day - The Legend of Zelda: Majora's Mask",
@@ -960,19 +1036,19 @@
   "id": "yfQYzb4i4eA"
 }, {
   "title": "Pizza Tower OST - Tombstone Arizona (Wasteyard)",
-  "channel": "Gallant Goon",
+  "channel": "lakglsdhj",
   "id": "cBabiUURxOY"
 }, {
   "title": "Pizza Tower OST - Oregano Mirage (Oregano Desert)",
-  "channel": "Gallant Goon",
+  "channel": "lakglsdhj",
   "id": "hfHcDa5jCF0"
 }, {
   "title": "Pizza Tower OST - Dungeon Freakshow (Bloodsauce Dungeon)",
-  "channel": "Gallant Goon",
+  "channel": "lakglsdhj",
   "id": "Xxegys0fRqM"
 }, {
   "title": "Pizza Tower OST - Hot Spaghetti (Pizzascape)",
-  "channel": "Gallant Goon",
+  "channel": "lakglsdhj",
   "id": "KJTof8AD3TU"
 }, {
   "title": "Payday 2 Official Soundtrack - #20 Shadows and Trickery",
@@ -1244,15 +1320,15 @@
   "id": "R0hfS1Qhhkw"
 }, {
   "title": "Warcraft III Frozen Throne Music - Power of the Horde",
-  "channel": "Warcraft Music",
+  "channel": "Warcraft Music | Congelatore",
   "id": "aUBrjGrzBm0"
 }, {
   "title": "Warcraft III Frozen Throne Music - Orc Theme (Old School)",
-  "channel": "Warcraft Music",
+  "channel": "Warcraft Music | Congelatore",
   "id": "2bQELQMMoy4"
 }, {
   "title": "Warcraft III Reign of Chaos Music - Orc 2",
-  "channel": "Warcraft Music",
+  "channel": "Warcraft Music | Congelatore",
   "id": "XVbbai6iiBs"
 }, {
   "title": "Warcraft 3 Soundtrack - Orc",
@@ -1272,7 +1348,7 @@
   "id": "jOpzP33_USs"
 }, {
   "title": "The Only Thing I Know For Real",
-  "channel": "Various Artists - Topic",
+  "channel": "Release - Topic",
   "id": "CXRxRTW6nXg"
 }, {
   "title": "Wario Land Shake It - Glittertown (3-4)",
@@ -1541,16 +1617,12 @@
   "channel": "GameSND",
   "id": "ycBO8Inc3js"
 }, {
-  "title": "[Persona 4 OST] 02 - A Corner of Memories",
-  "channel": "DemonDaysxOST",
-  "id": "iV1o6tbZLZk"
-}, {
   "title": "Vampire Survivors - Library 2 ost",
   "channel": "Ligonyx",
   "id": "YetJOnYHNjY"
 }, {
   "title": "Vampire Survivors OST (part 1 of 2)",
-  "channel": "Katko Gaming",
+  "channel": "Kat's Litterbox -- Let's Play and Other Stuff",
   "id": "u4CM4jNdmnM"
 }, {
   "title": "GTA San Andreas Theme Song ♫ [BEST QUALITY!]",
@@ -1577,8 +1649,7 @@
   "channel": "Pokeli",
   "id": "GIn8_Q27WFY"
 }, {
-  "title": "Gwyn, Lord of Cinder - Dark Souls Soundtrack",
-  "channel": "allaboutVGmusic",
+  "title": "Deleted video",
   "id": "AB6sOhQan9Y"
 }, {
   "title": "Pokémon Diamond, Pearl & Platinum - Champion Cynthia Battle Music (HQ)",
@@ -1733,8 +1804,7 @@
   "channel": "Gears for Breakfast",
   "id": "SHvhps47Lmc"
 }, {
-  "title": "Great Grey Wolf Sif - Dark Souls Soundtrack",
-  "channel": "allaboutVGmusic",
+  "title": "Deleted video",
   "id": "RZVyHH-voR8"
 }, {
   "title": "Rise Up Dead Man | Hunt: Showdown Humming Theme",
@@ -1785,7 +1855,7 @@
   "channel": "OldScapeMusic",
   "id": "BJhF0L7pfo8"
 }, {
-  "title": "Bloodborne - Cleric Beast",
+  "title": "Cleric Beast",
   "channel": "dudewhereismyspoon",
   "id": "cRGRSCAOqh4"
 }, {
@@ -1873,8 +1943,7 @@
   "channel": "Gears for Breakfast",
   "id": "OXBcBugpHZg"
 }, {
-  "title": "Ornstein & Smough - Dark Souls Soundtrack",
-  "channel": "allaboutVGmusic",
+  "title": "Deleted video",
   "id": "Nsps0I58yUM"
 }, {
   "title": "Waveshaper - Wisdom of Rage (from Furi original soundtrack)",
@@ -1889,7 +1958,7 @@
   "channel": "MasStream",
   "id": "-uH2_sPJuLw"
 }, {
-  "title": "Bloodborne - Laurence, the First Vicar",
+  "title": "Laurence, the First Vicar",
   "channel": "dudewhereismyspoon",
   "id": "BCDEDi5gDPo"
 }, {
@@ -2053,8 +2122,7 @@
   "channel": "Supergiant Games",
   "id": "SqFaCDvHxU4"
 }, {
-  "title": "Firelink Shrine - Dark Souls Soundtrack",
-  "channel": "allaboutVGmusic",
+  "title": "Deleted video",
   "id": "M6GK8HhjQQE"
 }, {
   "title": "Space Pirates - Castle Crashers",
@@ -2258,7 +2326,7 @@
   "id": "uhYYUAtc0UA"
 }, {
   "title": "VVVVVV Soundtrack 04/16 \"Pushing Onwards\"",
-  "channel": "Marcel",
+  "channel": "Araiguma Shinobi",
   "id": "25m3Gk7mRQM"
 }, {
   "title": "東方原曲　花映塚　四季映姫テーマ　六十年目の東方裁判～Fate of Sixty Years",
@@ -2278,7 +2346,7 @@
   "id": "rkpfWuSP2GE"
 }, {
   "title": "VVVVVV Soundtrack 07/16 \"Positive Force\"",
-  "channel": "Marcel",
+  "channel": "Araiguma Shinobi",
   "id": "Tp3qiOKuEBM"
 }, {
   "title": "Guilty Gear X2 OST-\"Blue Water Blue Sky\"",
@@ -2336,8 +2404,7 @@
   "channel": "Halo2playa",
   "id": "t6JgG__XbRA"
 }, {
-  "title": "Taurus Demon - Dark Souls Soundtrack",
-  "channel": "allaboutVGmusic",
+  "title": "Deleted video",
   "id": "ovjd22Rkhlk"
 }, {
   "title": "Yakuza 0 OST - 28 Interplanetary Spark",
@@ -2345,11 +2412,11 @@
   "id": "MYB-D9qEwzI"
 }, {
   "title": "Hit the Floor",
-  "channel": "Various Artists - Topic",
+  "channel": "Release - Topic",
   "id": "ZLYmRRfjngc"
 }, {
   "title": "VVVVVV Soundtrack 10/16 \"Potential For Anything\"",
-  "channel": "Marcel",
+  "channel": "Araiguma Shinobi",
   "id": "Uj8MsbgpjaQ"
 }, {
   "title": "Chemical Plant Zone Act 2 - Sonic Mania [OST]",
@@ -2384,8 +2451,7 @@
   "channel": "HearthPwn",
   "id": "WXxy3Y8daks"
 }, {
-  "title": "Horseplay - Red Dead Redemption Soundtrack",
-  "channel": "allaboutVGmusic",
+  "title": "Deleted video",
   "id": "_yQjHkoDip0"
 }, {
   "title": "Rules of Engagement",
@@ -2436,7 +2502,7 @@
   "channel": "Xenoblade Chronicles OST",
   "id": "UDJtsfR51To"
 }, {
-  "title": "Sekiro OST - Genichiro Ashina",
+  "title": "Genichiro Ashina",
   "channel": "dudewhereismyspoon",
   "id": "Mi8msYeehBg"
 }, {
@@ -2448,8 +2514,7 @@
   "channel": "Lhiandrow",
   "id": "jp_rl-1rYpQ"
 }, {
-  "title": "Gaping Dragon - Dark Souls Soundtrack",
-  "channel": "allaboutVGmusic",
+  "title": "Deleted video",
   "id": "6ukC3N1rkzQ"
 }, {
   "title": "Terraria Music - Night",
@@ -2484,7 +2549,7 @@
   "channel": "Alkalins",
   "id": "fC9jISKU25E"
 }, {
-  "title": "Sekiro OST - Strength and Discipline",
+  "title": "Strength and Discipline",
   "channel": "dudewhereismyspoon",
   "id": "6E1dCgFPGUc"
 }, {
@@ -2577,7 +2642,7 @@
   "id": "FHkvQX26EA4"
 }, {
   "title": "VVVVVV Soundtrack 11/16 \"Pressure Cooker\"",
-  "channel": "Marcel",
+  "channel": "Araiguma Shinobi",
   "id": "L0gOUmQ39uk"
 }, {
   "title": "Windmill Hut - The Legend of Zelda: Ocarina Of Time",
@@ -2669,7 +2734,7 @@
   "id": "ZQEUNrR0F2c"
 }, {
   "title": "VVVVVV Soundtrack 06/16 \"Passion For Exploring\"",
-  "channel": "Marcel",
+  "channel": "Araiguma Shinobi",
   "id": "C0j6pe043L4"
 }, {
   "title": "Twinleaf Town (Day) - Pokémon Diamond/Pearl/Platinum",
@@ -2689,7 +2754,7 @@
   "id": "TVyBV_HC8eg"
 }, {
   "title": "VVVVVV Soundtrack 08/16 \"Predestined Fate\"",
-  "channel": "Marcel",
+  "channel": "Araiguma Shinobi",
   "id": "yv_lcgLFJmc"
 }, {
   "title": "Heroes of Might and Magic 3 Music: Combat 2",
@@ -2705,7 +2770,7 @@
   "id": "TAz_4zHBT1M"
 }, {
   "title": "You Will Never Know - Katana ZERO (Gamerip)",
-  "channel": "Fivda's Upload Mess",
+  "channel": "Jenny McLesbian",
   "id": "OylGrT6mK-M"
 }, {
   "title": "Old RuneScape Soundtrack: Spirit",
@@ -2761,7 +2826,7 @@
   "id": "uKGOj4krgT0"
 }, {
   "title": "V Limo (New Donk Shitty) - Katana ZERO (Gamerip)",
-  "channel": "Fivda's Upload Mess",
+  "channel": "Jenny McLesbian",
   "id": "Oj568DGRHGE"
 }, {
   "title": "Sweet Sweet Canyon - Mario Kart 8 Deluxe OST",
@@ -2812,7 +2877,7 @@
   "channel": "Fivda",
   "id": "HVU27pIZUrQ"
 }, {
-  "title": "Sekiro OST - The Phantom Lady Butterfly",
+  "title": "The Phantom Lady Butterfly",
   "channel": "dudewhereismyspoon",
   "id": "I4azCgSeQVc"
 }, {
@@ -2821,7 +2886,7 @@
   "id": "TH0VN3Nixwg"
 }, {
   "title": "Sneaky Driver - Katana ZERO (Gamerip)",
-  "channel": "Fivda's Upload Mess",
+  "channel": "Jenny McLesbian",
   "id": "Urr19w-Mujo"
 }, {
   "title": "Mists of Pandaria Inn Music (Kazoo Part)",
@@ -2849,7 +2914,7 @@
   "id": "cBqJwv_XNvY"
 }, {
   "title": "Twisted Metal 1 Theme",
-  "channel": "The Colinator",
+  "channel": "LonelyWolf88",
   "id": "-fDfwpghvcg"
 }, {
   "title": "EoSD Stage 6 - The Young Descendant of Tepes",
@@ -3216,7 +3281,7 @@
   "id": "bUJqe8PgAT8"
 }, {
   "title": "Animal Crossing: New Horizons Soundtrack - 8AM",
-  "channel": "Cevan",
+  "channel": "cevan",
   "id": "e5h_KM1kXgw"
 }, {
   "title": "Old RuneScape Soundtrack: Crystal Sword",
@@ -3228,7 +3293,7 @@
   "id": "nbcHCHnf2YU"
 }, {
   "title": "Animal Crossing: New Horizons Soundtrack - 12PM",
-  "channel": "Cevan",
+  "channel": "cevan",
   "id": "xs4FJOvLPC8"
 }, {
   "title": "Fatal Fury Special - Ryo Sakazaki Theme OST",
@@ -3260,7 +3325,7 @@
   "id": "t9eAnv9Cv2Y"
 }, {
   "title": "Twisted Metal 2 Soundtrack - Moscow",
-  "channel": "The Colinator",
+  "channel": "LonelyWolf88",
   "id": "N_bJ_oY_9WE"
 }, {
   "title": "Super Meat Boy! - Digital Special Edition Soundtrack - 05 The Battle of Lil' Slugger (Ch 1 Boss)",
@@ -3900,7 +3965,7 @@
   "id": "mDUw5gdc35U"
 }, {
   "title": "River City Girls OST - Knock Out",
-  "channel": "XENO",
+  "channel": "Xeno",
   "id": "ZQAb2PIrdEI"
 }, {
   "title": "The Elder Srolls III: Morrowind Soundtrack - 06. The Road Most Travelled",
@@ -3936,7 +4001,7 @@
   "id": "JGa5kbCsnL8"
 }, {
   "title": "River City Girls OST - Detention",
-  "channel": "XENO",
+  "channel": "Xeno",
   "id": "JuWCarhqtHE"
 }, {
   "title": "Title ~ CrossCode (Original Game Soundtrack)",
@@ -4452,7 +4517,7 @@
   "id": "cX0csf5c6dY"
 }, {
   "title": "Salserissimo",
-  "channel": "Various Artists - Topic",
+  "channel": "Release - Topic",
   "id": "pBNOztnzeBc"
 }, {
   "title": "Crusader Kings II: Jade Dragon Soundtrack - Venerable Dynasty",
@@ -4496,7 +4561,7 @@
   "id": "3RVPRxxMJBI"
 }, {
   "title": "Animal Crossing: New Horizons Soundtrack - 8PM (Rain)",
-  "channel": "Cevan",
+  "channel": "cevan",
   "id": "VIG2CDQZDzc"
 }, {
   "title": "Rayman 2 overlord/menu theme",
@@ -4523,8 +4588,7 @@
   "channel": "TheAscendus",
   "id": "5D73xy7NPRY"
 }, {
-  "title": "The King of Fighters 2002: Unlimited Match- ESAKA!! (Kyo Team) OST",
-  "channel": "Neo Geo Land",
+  "title": "Deleted video",
   "id": "c738zEKLG-Y"
 }, {
   "title": "Rogue Legacy 2 OST - Heirloom",
