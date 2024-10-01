@@ -10,6 +10,10 @@ The website is actually a bunch of Forsen-related stuff. "Games and shit", as so
   * Each day you'll get a frame from Forsen's vod. Your task is to guess the date of the stream.
   * Return daily for new screenshots. Game keeps track of your progress - visit the Stats section to learn more.
   * For extra challenge you can try and guess the game on screenshot too.
+* [Forsen is live!](https://forsen.horse/rage-ban-game/)
+  * A psychological horror about a life of an asylum streamer.
+  * The asylum streamer in this game is you. You get to direct the daily 6 hour stream, and you have to stay sane during the adventure.
+  * Best enjoyed with Twitch integration and active chat, but also works as a single-player game.
 * [The Appeal Challenge](https://forsen.horse/unban-game/)
   * In this game you ~~role~~play as a person who just discovered Forsen's stream. Type some messages in chat and... Well, you'll see.
   * Fun and slightly challenging experience. But don't worry if you can't do it in first try.
