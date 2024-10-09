@@ -1,0 +1,45 @@
+@ 1.2.0 | 2024-10-09T13:15:50Z
+Deepest gratitude to everyone who took a moment to check out this game. While the competition has run its course, this game will not yet stop its development. You can expect several updates in the near future, which will bring you some of the features that were previously cut due to time constraints in the development stage.
++ reworked in-game clock: it tracks player's gaming style more accurately, and does not get infinitely stuck if you decide to play a single game for the whole day
++ added changelogs
++ added a notification for browsers with disabled hardware acceleration
++ added some more links to watch
++ some emotes (like `ResidentSleeper` and `FeelsWeirdMan` and such) are now a valid reason to shoot (was intended all along, but didn't count properly)
++ fix: improper visual feedback for messages with mentions
++ misc minor optimizations and fixes
+
+=-=-=
+
+@ 1.1.2 | 2024-10-04T23:46:42Z
++ added advice tips for when player misses several valid ban targets in a row
++ added some new videos to watch
++ fix: rare crash on "game over" event
+
+=-=-=
+
+@ 1.1.1 | 2024-10-02T17:03:41Z
++ minor adjustments to loyalty/rage modifiers
+
+=-=-=
+
+@ 1.1.0 | 2024-10-02T13:23:12Z
++ new minigame: ForsenGa
++ fix: rare occurence of never ending intro music 
+
+=-=-=
+
+@ 1.0.2 | 2024-10-01T18:49:27Z
++ added sounds for "game over" screen
++ fix: 3rd party emotes taking priority over twitch emotes
+
+=-=-=
+
+@ 1.0.1 | 2024-10-01T09:59:32Z
++ more links to watch
++ improve variety of "related videos" section
++ fix: "related videos" section layout style
+
+=-=-=
+
+@ 1.0.0 | 2024-09-30T20:01:01Z
+Initial release. Versions 0.X were not tracked during beta-testing.
