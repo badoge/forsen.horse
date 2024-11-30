@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: https://ogp.me/ns#" data-bs-theme="dark">
+  <head>
+    <meta charset="utf-8" />
+    <title>forsen clips archive</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, shrink-to-fit=no" />
+    <meta name="description" content="forsen clips archive" />
+    <meta name="keywords" content="forsen, clips, archive, twitch" />
+    <meta property="og:title" content="forsen clips archive" />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://forsen.horse/clips/" />
+    <meta property="og:image" content="https://forsen.horse/pics/ogimage.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:description" content="forsen clips archive" />
+    <link rel="apple-touch-icon" sizes="112x112" href="/pics/forsenle/icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/pics/forsenle/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/pics/forsenle/favicon-16x16.png" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="theme-color" content="#938271" />
+    <link rel="stylesheet" href="/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="/css/datatables.min.css" />
+    <link rel="stylesheet" href="/css/icons.css" />
+    <link rel="stylesheet" href="/css/common.min.css" />
+    <link rel="stylesheet" href="/css/clips.min.css" />
+  </head>
+
+  <body>
+    <noscript><div class="alert alert-danger" role="alert">WARNING! JavaScript is disabled. This site will not work properly without it.</div></noscript>
+
+    <!-- sidebar nav -->
+    <aside class="sidebar-navbar">
+      <ul class="nav nav-pills nav-flush flex-column mb-auto text-center">
+        <li class="nav-item">
+          <a href="/" class="nav-link" aria-current="page" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Forsle">
+            <img src="/pics/forsenle/icon.png" alt="Forsen.horse logo" class="logo" />
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/rage-ban-game/" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="🔴 Forsen is live!">
+            <i class="material-icons notranslate">co_present</i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/unban-game/" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="The Appeal Challenge">
+            <i class="material-icons notranslate">receipt</i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/chattersen/" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Chattersen">
+            <i class="material-icons notranslate">question_answer</i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/playlist/" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Forsen's Playlist">
+            <i class="material-icons notranslate">queue_music</i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/soundboard/" class="nav-link" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Soundboard">
+            <i class="material-icons notranslate">library_music</i>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="#" class="nav-link active" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="forsen clips archive">
+            <i class="material-icons notranslate">movie_creation</i>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <main>
+      <div class="container-fluid">
+        <div class="row mt-5">
+          <div class="col-2"></div>
+          <div class="col">
+            <table id="clipsTable" class="table table-bordered">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Game</th>
+                  <th>Duration</th>
+                  <th>Views</th>
+                  <th>Date</th>
+                  <th>Creator</th>
+                  <th>Link</th>
+                </tr>
+              </thead>
+              <tbody></tbody>
+            </table>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+    </main>
+    <script src="/js/bootstrap.bundle.min.js"></script>
+    <script src="/js/jquery.min.js"></script>
+    <script src="/js/datatables.min.js"></script>
+    <script src="/js/clips.js"></script>
+    <script src="/js/sidebar.js"></script>
+
+    <script>
+      window.onload = function () {
+        loadClips();
+      };
+    </script>
+  </body>
+</html>
