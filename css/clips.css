@@ -2,3 +2,7 @@
   height: 60vh;
   width: 100%;
 }
+
+a.no-decoration {
+  text-decoration: none;
+}

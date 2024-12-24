@@ -1,28 +1,33 @@
 async function loadClips() {
   let clipsTable = new DataTable("#clipsTable", {
     language: {
-      emptyTable: "loading...",
+      emptyTable: `<div class="spinner-border" role="status"><span class="visually-hidden">Loading...</span></div> Loading clips list...`,
     },
   });
 
   try {
     let response = await fetch(`/clips/clips.json`);
     let clips = await response.json();
-    console.log(clips);
     for (let index = 0; index < clips.length; index++) {
+      let creator = clips[index].creator_name || "no username";
+      if (creator == "livestreamfails.com mirror") {
+        creator = `<a href="${clips[index].reddit_link}" target="_blank" rel="noopener noreferrer" class="no-decoration">livestreamfails.com mirror</a>`;
+      }
+
       clipsTable.row.add([
         escapeString(clips[index].title || "no title"),
         escapeString(clips[index].game_name || "no game"),
         clips[index].duration,
         clips[index].view_count.toLocaleString(),
         clips[index].created_at,
-        clips[index].creator_name || "no username",
+        creator,
         `<a href="/clip#${clips[index]._id}" target="_blank" rel="noopener noreferrer" class="no-decoration">Link</a>`,
       ]);
     }
 
     clipsTable.draw(false);
   } catch (error) {
+    document.querySelector("#clipsTable > tbody > tr > td").innerHTML = `Could not load clips :(<br>${error}`;
     console.log(error);
   }
 } //loadClips
@@ -32,7 +37,7 @@ async function playClip() {
   console.log(clipID);
 
   if (clipID) {
-    document.getElementById("clipPlayer").src = `https://clips.forsen.horse/${clipID}`;
+    document.getElementById("clipPlayer").src = `https://f003.backblazeb2.com/file/forsen-clips/${clipID}.mp4`;
     let response = await fetch(`/clips/clips.json`);
     let clips = await response.json();
 
@@ -42,10 +47,12 @@ async function playClip() {
       document.getElementById("clipTitle").innerHTML = "Clip info not found";
       document.getElementById("clipInfo").innerHTML = "Clip info not found";
     } else {
+      let creator = clip.creator_name || "no username";
+      if (creator == "livestreamfails.com mirror") {
+        creator = `<a href="${clip.reddit_link}" target="_blank" rel="noopener noreferrer" class="no-decoration">livestreamfails.com mirror</a>`;
+      }
       document.getElementById("clipTitle").innerHTML = `${escapeString(clip.title || "no title")} - ${escapeString(clip.game_name || "no game")}`;
-      document.getElementById("clipInfo").innerHTML = `${clip.view_count} ${clip.view_count == 1 ? "view" : "views"} - Clipped by ${clip.creator_name || "no username"} on ${
-        clip.created_at
-      }`;
+      document.getElementById("clipInfo").innerHTML = `${clip.view_count.toLocaleString()} ${clip.view_count == 1 ? "view" : "views"} - Clipped by ${creator} on ${clip.created_at}`;
     }
   } else {
     document.getElementById("clipTitle").innerHTML = "No Clip ID provided";
