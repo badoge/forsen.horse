@@ -8,13 +8,15 @@ async function loadClips() {
   try {
     let response = await fetch(`/clips/clips.json`);
     let clips = await response.json();
+    let rows = [];
+
     for (let index = 0; index < clips.length; index++) {
       let creator = clips[index].creator_name || "no username";
       if (creator == "livestreamfails.com mirror") {
         creator = `<a href="${clips[index].reddit_link}" target="_blank" rel="noopener noreferrer" class="no-decoration">livestreamfails.com mirror</a>`;
       }
 
-      clipsTable.row.add([
+      rows.push([
         escapeString(clips[index].title || "no title"),
         escapeString(clips[index].game_name || "no game"),
         clips[index].duration,
@@ -25,7 +27,7 @@ async function loadClips() {
       ]);
     }
 
-    clipsTable.draw(false);
+    clipsTable.rows.add(rows).draw();
   } catch (error) {
     document.querySelector("#clipsTable > tbody > tr > td").innerHTML = `Could not load clips :(<br>${error}`;
     console.log(error);
