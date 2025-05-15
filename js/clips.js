@@ -6,7 +6,7 @@ async function loadClips() {
   });
 
   try {
-    let response = await fetch(`/clips/clips.json`);
+    let response = await fetch(`/clips/clips.min.json`);
     let clips = await response.json();
     let rows = [];
 
@@ -42,14 +42,14 @@ async function playClip() {
   let clipID = location.hash?.replace("#", "")?.trim();
   console.log(clipID);
   if (clipID) {
-    if (clipID.includes("_")) {
+    if (clipID.includes("_nani") || clipID.includes("_reckful")) {
       document.getElementById("clipPlayer").src = `https://f003.backblazeb2.com/file/${clipID.split("_").pop()}-clips/${clipID.split("_")[0]}.mp4`;
       clipID = clipID.split("_")[0];
     } else {
       document.getElementById("clipPlayer").src = `https://f003.backblazeb2.com/file/forsen-clips/${clipID}.mp4`;
     }
 
-    let response = await fetch(`/clips/clips.json`);
+    let response = await fetch(`/clips/clips.min.json`);
     let clips = await response.json();
 
     let clip = clips.find((e) => e._id === clipID);
