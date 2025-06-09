@@ -16,4 +16,4 @@ yarn.lock
 *.min.js
 
 # Ignore JSON
-*.json
+*min.json
