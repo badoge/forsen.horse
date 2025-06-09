@@ -49,21 +49,19 @@ async function playClip() {
       document.getElementById("clipPlayer").src = `https://f003.backblazeb2.com/file/forsen-clips/${clipID}.mp4`;
     }
 
-    let response = await fetch(`/clips/clips.min.json`);
-    let clips = await response.json();
+    let response = await fetch(`https://guessr.donk.workers.dev/forsenclip/${clipID}`);
+    let clip = await response.json();
 
-    let clip = clips.find((e) => e._id === clipID);
-
-    if (!clip) {
+    if (!clip[0]?.id) {
       document.getElementById("clipTitle").innerHTML = "Clip info not found";
       document.getElementById("clipInfo").innerHTML = "Clip info not found";
     } else {
-      let creator = clip.creator_name || "no username";
+      let creator = clip[0].creator_name || "no username";
       if (creator == "livestreamfails.com mirror") {
-        creator = `<a href="${clip.reddit_link}" target="_blank" rel="noopener noreferrer" class="no-decoration">livestreamfails.com mirror</a>`;
+        creator = `<a href="${clip[0].reddit_link}" target="_blank" rel="noopener noreferrer" class="no-decoration">livestreamfails.com mirror</a>`;
       }
-      document.getElementById("clipTitle").innerHTML = `${escapeString(clip.title || "no title")} - ${escapeString(clip.game_name || "no game")}`;
-      document.getElementById("clipInfo").innerHTML = `${clip.view_count.toLocaleString()} ${clip.view_count == 1 ? "view" : "views"} - Clipped by ${creator} on ${clip.created_at}`;
+      document.getElementById("clipTitle").innerHTML = `${escapeString(clip[0].title || "no title")} - ${escapeString(clip[0].game_name || "no game")}`;
+      document.getElementById("clipInfo").innerHTML = `${clip[0].view_count.toLocaleString()} ${clip[0].view_count == 1 ? "view" : "views"} - Clipped by ${creator} on ${clip[0].created_at}`;
     }
   } else {
     document.getElementById("clipTitle").innerHTML = "No Clip ID provided";
