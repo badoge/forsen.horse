@@ -55,7 +55,7 @@ async function playClip() {
       document.getElementById("clipInfo").innerHTML = "Clip info not found";
     } else {
       let creator = clip[0].creator_name || "no username";
-      if (creator == "livestreamfails.com mirror") {
+      if (creator == "livestreamfails.com mirror" && clip[0].reddit_link) {
         creator = `<a href="${clip[0].reddit_link}" target="_blank" rel="noopener noreferrer" class="no-decoration">livestreamfails.com mirror</a>`;
       }
       document.getElementById("clipTitle").innerHTML = `${escapeString(clip[0].title || "no title")} - ${escapeString(clip[0].game_name || "no game")}`;
