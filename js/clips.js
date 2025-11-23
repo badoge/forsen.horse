@@ -21,7 +21,7 @@ async function loadClips() {
       rows.push([
         `${title} ${!clips[index]?.broadcaster_name ? "" : `<span class="text-body-secondary"> | (${clips[index].broadcaster_name} clip)</span>`}`,
         escapeString(clips[index].game_name || "no game"),
-        clips[index].duration,
+        secondsToDuration(clips[index].duration),
         clips[index].view_count.toLocaleString(),
         clips[index].created_at,
         creator,
@@ -89,3 +89,24 @@ function assertString(input) {
     throw new TypeError("Expected a string but received a ".concat(invalidType));
   }
 } //assertString
+
+function secondsToDuration(seconds) {
+  // Round seconds to nearest integer (or use Math.floor if you prefer)
+  const total = Math.round(seconds);
+
+  const h = Math.floor(total / 3600);
+  const m = Math.floor((total % 3600) / 60);
+  const s = total % 60;
+
+  // Always format MM and SS as 2 digits
+  const mm = String(m).padStart(2, "0");
+  const ss = String(s).padStart(2, "0");
+
+  // If hours > 0, include them
+  if (h > 0) {
+    return `${String(h).padStart(2, "0")}:${mm}:${ss}`;
+  }
+
+  // Otherwise return MM:SS
+  return `${mm}:${ss}`;
+} //secondsToDuration
