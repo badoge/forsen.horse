@@ -94,7 +94,6 @@
             <div class="input-group my-2" id="inputPlaylistEnter">
               <input type="text" class="form-control" id="inputPlaylistLink" placeholder="i.e. https://youtube.com/playlist?list=PLA4XEe9tV8qaSoneg5s5uJYo6HrWnT7T0" />
               <div class="d-flex flex-column">
-                <small class="d-block mb-2 text-danger fw-bold" id="customPlaylistError"></small>
                 <small class="text-body-secondary">
                   NOTE: the custom playlist will NOT automatically update itself. You will have to do that manually each time songs are added to or removed from playlist.
                 </small>
@@ -103,10 +102,23 @@
             <div id="inputPlaylistDescription" class="my-2">
               <!-- this is where we will show description of the playlist -->
             </div>
-            <button role="button" tabindex="0" id="doUseCustomPlaylist" class="btn btn-primary d-flex align-items-center mt-4 mx-auto">
-              <i class="material-icons notranslate my-auto align-center">low_priority</i>
-              <span class="my-auto ms-2">Load selected playlist</span>
-            </button>
+            <div>
+              <small class="d-block mb-2 text-danger fw-bold" id="customPlaylistError"></small>
+            </div>
+            <div class="d-flex flex-column align-items-center justify-content-center">
+              <button role="button" tabindex="0" id="doUseCustomPlaylist" class="btn btn-primary mt-4">
+                <div class="d-flex align-items-center">
+                  <i class="material-icons notranslate my-auto align-center">low_priority</i>
+                  <span class="my-auto ms-2">Load selected playlist</span>
+                </div>
+              </button>
+              <button role="button" tabindex="0" id="forgetCustomPlaylist" class="btn btn-danger mt-2" style="display: none">
+                <div class="d-flex align-items-center">
+                  <i class="material-icons notranslate my-auto align-center">heart_broken</i>
+                  <span class="my-auto ms-2">Forget this playlist</span>
+                </div>
+              </button>
+            </div>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>

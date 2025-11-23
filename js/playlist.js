@@ -237,6 +237,7 @@ const linkToPlaylist = document.getElementById("nowPlayingList"),
   divPlaylist = document.getElementById("playlistItems"),
   btnUseDefaultPlaylist = document.getElementById("doUseDefaultPlaylist"),
   btnUseCustomPlaylist = document.getElementById("doUseCustomPlaylist"),
+  btnForgetCustomPlaylist = document.getElementById("forgetCustomPlaylist"),
   txtCustomPlaylistError = document.getElementById("customPlaylistError"),
   optCustomPlaylist = document.getElementById("inputPlaylistLink"),
   optAutoReshuffle = document.getElementById("optShuffleOnRefresh"),
@@ -561,7 +562,7 @@ async function loadCustomPlaylist() {
     if (history.findIndex((x) => x[0] === newPlaylist.id) < 0) {
       history.push([newPlaylist.id, newPlaylist.name]);
     }
-    localStorage.setItem(YT_LAST_USED_IDS_KEY, history.map((x) => x.map(encodeURIComponent).join(":")).join(";"));
+    saveCustomHistory(history);
     populateSelector();
   } catch (e) {
     console.warn("Load custom playlist failed", e);
@@ -582,6 +583,9 @@ function getCustomHistory() {
   const allItems = str.split(";");
   return allItems.map((r) => r.split(":").map(decodeURIComponent));
 }
+function saveCustomHistory(list = []) {
+  localStorage.setItem(YT_LAST_USED_IDS_KEY, list.map((x) => x.map(encodeURIComponent).join(":")).join(";"));
+}
 
 function updateChangePlaylistSection() {
   const value = inputPlaylistSelect.value;
@@ -589,8 +593,10 @@ function updateChangePlaylistSection() {
     const defaultItem = YT_DEFAULT_PLAYLISTS.find((r) => r.id === value);
     if (defaultItem) {
       inputPlaylistDescription.innerHTML = defaultItem.desc;
+      btnForgetCustomPlaylist.style.display = "none";
     } else {
       inputPlaylistDescription.innerHTML = `Custom playlist.`;
+      btnForgetCustomPlaylist.style.display = "";
     }
     inputPlaylistDescription.innerHTML += `<br><br>Link: <a href="https://www.youtube.com/playlist?list=${value}" target="_blank">YouTube</a>`;
     inputPlaylistEnter.style.display = "none";
@@ -627,6 +633,14 @@ function populateSelector() {
 
 populateSelector();
 inputPlaylistSelect.addEventListener("change", updateChangePlaylistSection);
+btnForgetCustomPlaylist.addEventListener("click", () => {
+  playlistModalDialog.hide();
+
+  const id = inputPlaylistSelect.value;
+  const history = getCustomHistory();
+  saveCustomHistory(history.filter((x) => x[0] !== id));
+  populateSelector();
+});
 
 // bootstrap - load all interactive elements:
 const errorModalDialog = new bootstrap.Modal(document.getElementById("modalPanic"));
