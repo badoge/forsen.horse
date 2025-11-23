@@ -9,11 +9,21 @@ Array.prototype.shuffle = function () {
   return this;
 };
 
+const YT_DEFAULT_PLAYLISTS = [
+  {
+    id: "PLA4XEe9tV8qaSoneg5s5uJYo6HrWnT7T0",
+    name: "Forsens BRAND NEW DMCA FREE Asylum playlist of Boomer and Zoomer games",
+    desc: "Default playlist that Forsen used during his Minecraft speedruns",
+  },
+];
+
 // custom playlist support
-const YT_DEFAULT_PLAYLIST = "PLA4XEe9tV8qaSoneg5s5uJYo6HrWnT7T0";
 const YT_API_KEY = "AIzaSyBVPb_QSurBi3q18GYgw0_GfXQ55AYAH1A"; // domain-restricted
 const YT_PLAYLIST_BASE = "https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&key=" + YT_API_KEY;
+const YT_PLAYLIST_INFO = "https://youtube.googleapis.com/youtube/v3/playlists?part=snippet,contentDetails&maxResults=1&key=" + YT_API_KEY;
 const YT_STORED_ID_KEY = "fp-external-playlist-id";
+const YT_LAST_USED_IDS_KEY = "fp-external-history-ids";
+const YT_CUSTOM_PLAYLIST_DATA_KEY = "fp-external-playlist-data";
 
 async function loadPlaylistPortion(playlist, nextPageToken) {
   let link = YT_PLAYLIST_BASE + "&playlistId=" + encodeURIComponent(playlist.id);
@@ -54,10 +64,24 @@ class ExtPlaylist {
       // assume user entered raw playlist id
       this.id = link;
     }
-    console.info("New playlist instantiated. ID: ", this.id);
+    console.debug("New playlist instantiated. ID: ", this.id);
     this.items = [];
     this.index = 0;
+    this.count = 0;
     this.setReady(false); // call this.fetchItems() to load items first
+  }
+
+  async fetchData() {
+    console.debug("Fetching basic info about playlist from YT API. ID: ", this.id);
+    const link = YT_PLAYLIST_INFO + "&id=" + encodeURIComponent(this.id);
+    const data = await fetch(link).then((r) => r.json());
+    if (data.error) {
+      console.error(`Playlist general information fetch failed. Error ${data.error.code} `, data.error.message);
+      if (data.error.errors && data.error.errors.length > 1) console.warn("Additional errors:", data.error.errors);
+      throw new Error(data.error.message || "Youtube API Error");
+    }
+
+    return data.items ? data.items[0] : null;
   }
 
   async fetchItems() {
@@ -65,9 +89,16 @@ class ExtPlaylist {
     this.items.length = 0;
     this.index = 0;
 
+    const playlistData = await this.fetchData();
+    this.name = playlistData.snippet?.title || this.id;
+    this.count = playlistData.contentDetails?.itemCount || 0;
+
     let nextPageToken = 1;
+    console.debug("Fetching playlist items from YT API. ID: ", this.id);
     while (nextPageToken) {
       nextPageToken = await loadPlaylistPortion(this, nextPageToken);
+      // MIX playlists are infinite, this is the bandaid fix:
+      if (this.count && this.items.length >= this.count) break;
     }
     console.info("Playlist loaded. Total item count: ", this.items.length);
     // shuffle and interactivity toggle should be called manually
@@ -182,7 +213,7 @@ class ExtPlaylist {
 
   loadFromStorage() {
     try {
-      const data = JSON.parse(localStorage.getItem("fp-external-playlist-data"));
+      const data = JSON.parse(localStorage.getItem(YT_CUSTOM_PLAYLIST_DATA_KEY));
       if (!Array.isArray(data)) throw new Error("LocalStorage data is not valid");
       this.items = data;
       this.ready = true; // interactivity can't be enabled just yet
@@ -193,7 +224,8 @@ class ExtPlaylist {
   }
   saveToStorage() {
     localStorage.setItem(YT_STORED_ID_KEY, this.id);
-    localStorage.setItem("fp-external-playlist-data", JSON.stringify(this.items));
+    localStorage.setItem(YT_CUSTOM_PLAYLIST_DATA_KEY, JSON.stringify(this.items));
+
     return this;
   }
 }
@@ -216,6 +248,11 @@ const linkToPlaylist = document.getElementById("nowPlayingList"),
   btnNextSong = document.getElementById("doSkipSong"),
   btnGroupShuffle = document.getElementById("ctrlGroupShuffle"),
   btnShuffle = document.getElementById("doShuffle"),
+  inputPlaylistSelect = document.getElementById("inputPlaylistSelect"),
+  inputPlaylistDescription = document.getElementById("inputPlaylistDescription"),
+  inputPlaylistEnter = document.getElementById("inputPlaylistEnter"),
+  inputPlaylistDefaultGroup = document.getElementById("inputPlaylistSelectDefault"),
+  inputPlaylistCustomGroup = document.getElementById("inputPlaylistSelectCustom"),
   SpinnerHTML = `<div class="spinner-border spinner-border-sm" role="status"><span class="visually-hidden">Loading...</span></div>`;
 
 // player vars:
@@ -359,34 +396,32 @@ function onPlayerReady() {
     return updateVolume(this.value);
   });
 
-  btnUseDefaultPlaylist.addEventListener("click", () => {
-    toggleInteractionState(false);
-    playlistModalDialog.hide();
-    useDefaultPlaylist();
-  });
-
   btnUseCustomPlaylist.addEventListener("click", loadCustomPlaylist);
   optCustomPlaylist.addEventListener("keydown", (event) => {
     if (event.key === "Enter") loadCustomPlaylist();
   });
   optCustomPlaylist.addEventListener("input", () => {
     txtCustomPlaylistError.innerHTML = "";
-    btnUseCustomPlaylist.innerText = optCustomPlaylist.value === playlist.id ? "Update" : "Load";
+    //btnUseCustomPlaylist.innerText = optCustomPlaylist.value === playlist.id ? "Update" : "Load";
   });
 
   // set the playlist:
   try {
     const extId = localStorage.getItem(YT_STORED_ID_KEY);
     if (!extId) throw new Error("No custom playlist stored");
-    playlist = new ExtPlaylist(extId);
-    playlist.loadFromStorage().setReady(true).loadShuffleState();
-    optCustomPlaylist.value = playlist.id;
-    btnUseCustomPlaylist.innerText = "Update";
-    linkToPlaylist.href = "https://www.youtube.com/playlist?list=" + playlist.id;
-    linkToPlaylist.innerText = "custom playlist";
+
+    const existingPlaylist = YT_DEFAULT_PLAYLISTS.find((p) => p.id === extId);
+    if (existingPlaylist) {
+      useDefaultPlaylist(existingPlaylist);
+    } else {
+      playlist = new ExtPlaylist(extId);
+      playlist.loadFromStorage().setReady(true).loadShuffleState();
+      linkToPlaylist.href = "https://www.youtube.com/playlist?list=" + playlist.id;
+      linkToPlaylist.innerText = "custom playlist";
+    }
   } catch (e) {
     console.info("Failed to load custom playlist; falling back to default.\n", e);
-    useDefaultPlaylist();
+    useDefaultPlaylist(YT_DEFAULT_PLAYLISTS[0]);
   }
 }
 
@@ -470,18 +505,17 @@ function populateVisualPlaylist() {
   });
 }
 
-function useDefaultPlaylist() {
-  fetch("/data/forsen-playlist.json")
+function useDefaultPlaylist(playlistInfo) {
+  fetch(`/data/playlists/${playlistInfo.id}.json`)
     .then((r) => r.json())
     .then((list) => {
       // everything is ready!
-      playlist = new ExtPlaylist(YT_DEFAULT_PLAYLIST);
+      playlist = new ExtPlaylist(playlistInfo.id);
       playlist.items = list;
       playlist.setReady(true).loadShuffleState();
-      localStorage.removeItem(YT_STORED_ID_KEY);
-      btnUseCustomPlaylist.innerText = "Load";
-      linkToPlaylist.href = "https://www.youtube.com/playlist?list=" + YT_DEFAULT_PLAYLIST;
-      linkToPlaylist.innerText = "original Forsen playlist";
+      localStorage.setItem(YT_STORED_ID_KEY, playlist.id);
+      linkToPlaylist.href = "https://www.youtube.com/playlist?list=" + playlist.id;
+      linkToPlaylist.innerText = playlistInfo.name;
     })
     .catch((e) => {
       console.error("Playlist parsing error", e);
@@ -493,6 +527,8 @@ async function loadCustomPlaylist() {
   txtCustomPlaylistError.innerHTML = "";
   optCustomPlaylist.disabled = true;
   btnUseCustomPlaylist.disabled = true;
+
+  const currentButtonHTML = btnUseCustomPlaylist.innerHTML;
   btnUseCustomPlaylist.innerHTML = SpinnerHTML;
   try {
     player.pauseVideo();
@@ -500,9 +536,17 @@ async function loadCustomPlaylist() {
     playlist.setReady(false);
 
     // attempt to load playlist
-    const userLink = (optCustomPlaylist.value || "").trim();
+    const userLink = (inputPlaylistSelect.value || optCustomPlaylist.value || "").trim();
     if (!userLink) throw new Error("Please provide a YouTube link");
     const newPlaylist = new ExtPlaylist(userLink);
+
+    const existingPlaylist = YT_DEFAULT_PLAYLISTS.find((p) => p.id === newPlaylist.id);
+    if (existingPlaylist) {
+      console.info("Custom playlist is actually a default playlist: ", existingPlaylist);
+      playlistModalDialog.hide();
+      return useDefaultPlaylist(existingPlaylist);
+    }
+
     await newPlaylist.fetchItems();
     if (newPlaylist.items.length < 1) throw new Error("This playlist is empty!");
 
@@ -512,16 +556,77 @@ async function loadCustomPlaylist() {
     playlistModalDialog.hide();
     linkToPlaylist.href = "https://www.youtube.com/playlist?list=" + playlist.id;
     linkToPlaylist.innerText = "custom playlist";
+
+    const history = getCustomHistory();
+    if (history.findIndex((x) => x[0] === newPlaylist.id) < 0) {
+      history.push([newPlaylist.id, newPlaylist.name]);
+    }
+    localStorage.setItem(YT_LAST_USED_IDS_KEY, history.map((x) => x.map(encodeURIComponent).join(":")).join(";"));
+    populateSelector();
   } catch (e) {
     console.warn("Load custom playlist failed", e);
     txtCustomPlaylistError.innerHTML = e.message;
   } finally {
     optCustomPlaylist.disabled = false;
+    optCustomPlaylist.value = "";
     btnUseCustomPlaylist.disabled = false;
-    btnUseCustomPlaylist.innerHTML = "Load";
+    btnUseCustomPlaylist.innerHTML = currentButtonHTML;
     playlist.setReady(true);
   }
 }
+
+// initial load:
+function getCustomHistory() {
+  const str = (localStorage.getItem(YT_LAST_USED_IDS_KEY) || "").trim();
+  if (!str) return [];
+  const allItems = str.split(";");
+  return allItems.map((r) => r.split(":").map(decodeURIComponent));
+}
+
+function updateChangePlaylistSection() {
+  const value = inputPlaylistSelect.value;
+  if (value) {
+    const defaultItem = YT_DEFAULT_PLAYLISTS.find((r) => r.id === value);
+    if (defaultItem) {
+      inputPlaylistDescription.innerHTML = defaultItem.desc;
+    } else {
+      inputPlaylistDescription.innerHTML = `Custom playlist.`;
+    }
+    inputPlaylistDescription.innerHTML += `<br><br>Link: <a href="https://www.youtube.com/playlist?list=${value}" target="_blank">YouTube</a>`;
+    inputPlaylistEnter.style.display = "none";
+  } else {
+    inputPlaylistDescription.innerHTML = "";
+    inputPlaylistEnter.style.display = "";
+  }
+}
+
+function populateSelector() {
+  const current = localStorage.getItem(YT_STORED_ID_KEY) || YT_DEFAULT_PLAYLISTS[0].id;
+  while (inputPlaylistDefaultGroup.firstChild) {
+    inputPlaylistDefaultGroup.removeChild(inputPlaylistDefaultGroup.firstChild);
+  }
+  for (const item of YT_DEFAULT_PLAYLISTS) {
+    const opt = document.createElement("option");
+    opt.value = item.id;
+    opt.innerText = item.name;
+    opt.selected = current === item.id;
+    inputPlaylistDefaultGroup.appendChild(opt);
+  }
+  while (inputPlaylistCustomGroup.firstChild) {
+    inputPlaylistCustomGroup.removeChild(inputPlaylistCustomGroup.firstChild);
+  }
+  for (const item of getCustomHistory()) {
+    const opt = document.createElement("option");
+    opt.value = item[0];
+    opt.selected = current === item[0];
+    opt.innerText = item[1];
+    inputPlaylistCustomGroup.appendChild(opt);
+  }
+  updateChangePlaylistSection();
+}
+
+populateSelector();
+inputPlaylistSelect.addEventListener("change", updateChangePlaylistSection);
 
 // bootstrap - load all interactive elements:
 const errorModalDialog = new bootstrap.Modal(document.getElementById("modalPanic"));
