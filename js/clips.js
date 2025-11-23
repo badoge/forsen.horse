@@ -25,7 +25,7 @@ async function loadClips() {
         clips[index].view_count.toLocaleString(),
         clips[index].created_at,
         creator,
-        `<a href="/clip#${clips[index]._id}${clips[index]?.folder == "local" ? `_donk` : ""}" target="_blank" rel="noopener noreferrer" class="no-decoration">Link</a>`,
+        `<a href="/clip#${clips[index]._id}" target="_blank" rel="noopener noreferrer" class="no-decoration">Link</a>`,
       ]);
     }
 
@@ -40,12 +40,7 @@ async function playClip() {
   let clipID = location.hash?.replace("#", "")?.trim();
   console.log(clipID);
   if (clipID) {
-    if (clipID.endsWith("_donk")) {
-      clipID = clipID.replace("_donk", "");
-      document.getElementById("clipPlayer").src = `https://donk.forsen.horse/${clipID}.mp4`;
-    } else {
-      document.getElementById("clipPlayer").src = `https://f003.backblazeb2.com/file/clip-archive/${clipID}.mp4`;
-    }
+    document.getElementById("clipPlayer").src = `https://donk.forsen.horse/clip/${clipID}.mp4`;
 
     let response = await fetch(`https://guessr.donk.workers.dev/forsenclip/${clipID}`);
     let clip = await response.json();
@@ -54,7 +49,7 @@ async function playClip() {
       document.getElementById("clipTitle").innerHTML = "Clip info not found";
       document.getElementById("clipInfo").innerHTML = "Clip info not found";
     } else {
-      let creator = clip[0].creator_name || "no username";
+      let creator = clip[0].creator_name || "unknown";
       if (creator == "livestreamfails.com mirror" && clip[0].reddit_link) {
         creator = `<a href="${clip[0].reddit_link}" target="_blank" rel="noopener noreferrer" class="no-decoration">livestreamfails.com mirror</a>`;
       }
