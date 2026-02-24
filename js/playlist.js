@@ -423,6 +423,15 @@ function onPlayerReady() {
       playlist = new ExtPlaylist(extId);
       playlist.loadFromStorage().setReady(true).loadShuffleState();
       linkToPlaylist.href = "https://www.youtube.com/playlist?list=" + playlist.id;
+      if (!playlist.name) {
+        // attempt to restore playlist name:
+        for (const item of inputPlaylistCustomGroup.childNodes) {
+          if (item.value === playlist.id) {
+            playlist.name = item.innerText;
+            break;
+          }
+        }
+      }
       linkToPlaylist.innerText = playlist.name || "custom playlist";
     }
   } catch (e) {
