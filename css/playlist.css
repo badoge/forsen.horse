@@ -68,7 +68,7 @@ input[type="range"][orient="vertical"] {
 
 .custom-navbar {
   height: 4em;
-  z-index: 3;
+  z-index: 10;
 }
 
 img.logo {
