@@ -254,12 +254,22 @@
             <div class="content-section" id="ytPlayerContainer">
               <div id="YtPlayer"></div>
             </div>
-            <div class="content-section" id="playlist">
-              <div class="fs-6 bg-body text-center my-2">
-                <i>Now playing:</i>
-                <a href="https://www.youtube.com/playlist?list=PLA4XEe9tV8qaSoneg5s5uJYo6HrWnT7T0" target="_blank" rel="noopener noreferrer" class="no-decoration" id="nowPlayingList">
-                  original Forsen playlist
-                </a>
+            <div class="content-section position-relative" id="playlist">
+              <div class="fs-6 bg-body text-left p-2 ps-3 border-bottom border-4 position-sticky top-0 z-3">
+                <p class="m-0">
+                  <small class="fst-italic">Now playing:</small><br />
+                  <b id="nowPlayingTitle">Loading</b>
+                  &ndash;
+                  <span id="nowPlayingChannel">Please wait...</span>
+                </p>
+                <p class="m-0 mt-2">
+                  <small>
+                    <i>Playlist:</i>
+                    <a href="https://www.youtube.com/playlist?list=PLA4XEe9tV8qaSoneg5s5uJYo6HrWnT7T0" target="_blank" rel="noopener noreferrer" class="no-decoration" id="nowPlayingList">
+                      original Forsen playlist
+                    </a>
+                  </small>
+                </p>
               </div>
               <ul class="list-group list-group-flush" id="playlistItems">
                 <!-- dynamic contents -->
@@ -275,7 +285,7 @@
     </main>
 
     <script src="/js/bootstrap.bundle.min.js"></script>
-    <script src="/js/playlist.min.js"></script>
+    <script src="/js/playlist.js"></script>
     <script src="/js/sidebar.js"></script>
   </body>
 </html>

@@ -235,6 +235,8 @@ const linkToPlaylist = document.getElementById("nowPlayingList"),
   divLoader = document.getElementById("loader"),
   divContent = document.getElementById("content"),
   divPlaylist = document.getElementById("playlistItems"),
+  nowPlayingTitle = document.getElementById("nowPlayingTitle"),
+  nowPlayingChannel = document.getElementById("nowPlayingChannel"),
   btnUseDefaultPlaylist = document.getElementById("doUseDefaultPlaylist"),
   btnUseCustomPlaylist = document.getElementById("doUseCustomPlaylist"),
   btnForgetCustomPlaylist = document.getElementById("forgetCustomPlaylist"),
@@ -334,6 +336,9 @@ function playNextSong(force = false) {
     }
   });
   playlist.saveIndex();
+
+  nowPlayingChannel.innerText = nextSong.channel;
+  nowPlayingTitle.innerText = nextSong.title;
 }
 
 function updateVolume(value = 0) {
@@ -468,6 +473,8 @@ function waitAndSkipSong(time = 2000) {
 
 function populateVisualPlaylist() {
   divPlaylist.innerHTML = "";
+  nowPlayingChannel.innerText = "Please wait...";
+  nowPlayingTitle.innerText = "⏳ Loading";
 
   const runSpecificPlaylistItem = (event) => {
     try {
