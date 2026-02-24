@@ -423,7 +423,7 @@ function onPlayerReady() {
       playlist = new ExtPlaylist(extId);
       playlist.loadFromStorage().setReady(true).loadShuffleState();
       linkToPlaylist.href = "https://www.youtube.com/playlist?list=" + playlist.id;
-      linkToPlaylist.innerText = "custom playlist";
+      linkToPlaylist.innerText = playlist.name || "custom playlist";
     }
   } catch (e) {
     console.info("Failed to load custom playlist; falling back to default.\n", e);
@@ -563,7 +563,7 @@ async function loadCustomPlaylist() {
     playlist.reshuffle().setReady(true);
     playlistModalDialog.hide();
     linkToPlaylist.href = "https://www.youtube.com/playlist?list=" + playlist.id;
-    linkToPlaylist.innerText = "custom playlist";
+    linkToPlaylist.innerText = playlist.name || "custom playlist";
 
     const history = getCustomHistory();
     if (history.findIndex((x) => x[0] === newPlaylist.id) < 0) {
