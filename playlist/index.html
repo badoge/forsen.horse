@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" prefix="og: https://ogp.me/ns#" data-bs-theme="dark">
   <head>
     <meta charset="utf-8" />
@@ -235,6 +235,10 @@
                       <input class="form-check-input" type="checkbox" value="" id="optShuffleOnRefresh" />
                       <label class="form-check-label ms-1" for="optShuffleOnRefresh"> Force new shuffle on reload </label>
                     </div>
+                    <div class="dropdown-item">
+                      <input class="form-check-input" type="checkbox" value="" id="optAutoplayOnRefresh" />
+                      <label class="form-check-label ms-1" for="optAutoplayOnRefresh"> Autoplay on reload </label>
+                    </div>
                   </div>
                 </div>
                 <button role="button" tabindex="0" id="doChangePlaylist" class="btn btn-outline-info d-flex mx-1" data-bs-toggle="tooltip" data-bs-title="Change playlist">
@@ -259,7 +263,7 @@
                 <p class="m-0">
                   <small class="fst-italic">Now playing:</small><br />
                   <b id="nowPlayingTitle">Loading</b>
-                  &ndash;
+                  <span id="nowPlayingSeparator">&ndash;</span>
                   <span id="nowPlayingChannel">Please wait...</span>
                 </p>
                 <p class="m-0 mt-2">

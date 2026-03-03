@@ -243,6 +243,7 @@ const linkToPlaylist = document.getElementById("nowPlayingList"),
   txtCustomPlaylistError = document.getElementById("customPlaylistError"),
   optCustomPlaylist = document.getElementById("inputPlaylistLink"),
   optAutoReshuffle = document.getElementById("optShuffleOnRefresh"),
+  optAutoPlay = document.getElementById("optAutoplayOnRefresh"),
   optMute = document.getElementById("muteButton"),
   optVolume = document.getElementById("volumeSlider"),
   btnPlayAll = document.getElementById("doPlay"),
@@ -272,6 +273,13 @@ optAutoReshuffle.addEventListener("change", () => {
   localStorage.setItem("fp-option-autoshuffle", autoReshuffle);
 });
 
+let autoPlay = localStorage.getItem("fp-option-autoplay") === "true";
+optAutoPlay.checked = autoPlay;
+optAutoPlay.addEventListener("change", () => {
+  autoPlay = optAutoPlay.checked;
+  localStorage.setItem("fp-option-autoplay", autoPlay);
+});
+
 let muted = localStorage.getItem("fp-option-muted") === "true";
 let volume = localStorage.getItem("fp-option-volume");
 if (volume === null || isNaN(volume) || volume < 0 || volume > 100) {
@@ -281,6 +289,16 @@ if (volume === null || isNaN(volume) || volume < 0 || volume > 100) {
 optVolume.value = volume;
 optMute.firstElementChild.innerText = updateMuteState(muted);
 
+// player state vars:
+let wasPlayerActiveDuringLastTime = false;
+function updateLastPlayerState(newValue) {
+  localStorage.setItem("fp-option-laststate", newValue);
+}
+function getLastPlayerState() {
+  const val = localStorage.getItem("fp-option-laststate");
+  return val === null || isNaN(val) ? -1 : parseInt(val, 10);
+}
+
 // load Youtube API:
 const tag = document.createElement("script");
 tag.src = "https://www.youtube.com/iframe_api";
@@ -289,6 +307,8 @@ firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 
 // eslint-disable-next-line no-unused-vars
 function onYouTubeIframeAPIReady() {
+  wasPlayerActiveDuringLastTime = [YT.PlayerState.PLAYING, YT.PlayerState.BUFFERING].includes(getLastPlayerState());
+
   // create player instance:
   player = new YT.Player("YtPlayer", {
     width: "1280",
@@ -438,9 +458,17 @@ function onPlayerReady() {
     console.info("Failed to load custom playlist; falling back to default.\n", e);
     useDefaultPlaylist(YT_DEFAULT_PLAYLISTS[0]);
   }
+
+  // click "Play" for user if required:
+  if (autoPlay && wasPlayerActiveDuringLastTime) {
+    console.info("[Autoplay] Resume playing.");
+    setTimeout(() => btnPlayAll.click(), 1e3);
+  }
 }
 
 function onPlayerStateChange(event) {
+  updateLastPlayerState(event.data);
+
   // play button state change:
   switch (event.data) {
     case YT.PlayerState.ENDED:
