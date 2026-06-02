@@ -42,6 +42,7 @@ async function playClip() {
   if (clipID) {
     document.getElementById("clipPlayerSource").src = `https://donk.forsen.horse/clip/${clipID}.mp4`;
     document.getElementById("clipPlayerTrack").src = `https://donk.forsen.horse/subtitles/${clipID}.vtt`;
+    document.getElementById("clipPlayer").load();
 
     let response = await fetch(`https://guessr.donk.workers.dev/forsenclip/${clipID}`);
     let clip = await response.json();
