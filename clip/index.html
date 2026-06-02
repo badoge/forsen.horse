@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en" prefix="og: https://ogp.me/ns#" data-bs-theme="dark">
   <head>
     <meta charset="utf-8" />
@@ -75,7 +75,10 @@
             <div class="card" id="clipCard">
               <div class="card-header text-center" id="clipTitle">Loading...</div>
               <div class="card-body p-0 ratio ratio-16x9" id="clipCardBody">
-                <video id="clipPlayer" src="" controls autoplay></video>
+                <video id="clipPlayer" controls autoplay>
+                  <source id="clipPlayerSource" src="" type="video/mp4" />
+                  <track id="clipPlayerTrack" label="English" kind="subtitles" srclang="en" src="" default />
+                </video>
               </div>
               <div class="card-footer text-body-secondary" id="clipInfo">Loading...</div>
             </div>
